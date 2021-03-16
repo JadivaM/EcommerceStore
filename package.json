@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@chec/commerce.js": "^2.3.2"
+  }
+}
