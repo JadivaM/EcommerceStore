@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
 body {
     font-family: 'Noto Sans JP', sans-serif;
     padding: 0;
@@ -25,4 +27,23 @@ body {
 
 .product-card-text--title, .product-card-text--price {
     font-size: 0.85rem;
+}
+
+
+.home-hero-image {
+    background-image: url('./Images/tom-crew-INY4JowWde4-unsplash.jpg');
+    width: 100vw;
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 40% 60%;
+}
+
+.home-hero-image--text {
+    color: white;
+    font-size: 3.5rem;
+    margin-block-start:auto;
+    font-family: 'Merriweather', serif;
+    width: 35%;
+    padding: 10%;
 }
