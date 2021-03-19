@@ -25,6 +25,10 @@ body {
     height: 16em;
 }
 
+.MuiPaper-outlined {
+    border: none;
+}
+
 .product-card-text--title, .product-card-text--price {
     font-size: 0.85rem;
 }
