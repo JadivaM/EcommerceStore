@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Merriweather', serif;
     padding: 0;
     margin: 0;
 }
@@ -35,7 +35,7 @@ body {
 
 
 .home-hero-image {
-    background-image: url('./Images/tom-crew-INY4JowWde4-unsplash.jpg');
+    background-image: url('./Images/oriento-NO4e9-oru8Q-unsplash.jpg');
     width: 100vw;
     height: 90vh;
     background-repeat: no-repeat;
@@ -51,13 +51,12 @@ body {
 }
 
 .home-hero-image--text, .home-hero-image--button {
-    font-family: 'Merriweather', serif;
     margin-block-start:auto;
-    color: white;
+    color:rgba(0, 0, 0, 0.767);
 }
 
 .home-hero-image--button  {
-    border: white solid 1px;
+    border: rgba(0, 0, 0, 0.767) solid 1px;
     width: fit-content;
     padding: 0.5%;
     margin-left: 20%;
