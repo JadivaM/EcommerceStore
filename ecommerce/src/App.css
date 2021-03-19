@@ -40,10 +40,21 @@ body {
 }
 
 .home-hero-image--text {
-    color: white;
     font-size: 3.5rem;
-    margin-block-start:auto;
-    font-family: 'Merriweather', serif;
     width: 35%;
-    padding: 10%;
+    padding: 10% 10% 0 10%;
+    margin-bottom: 2%;
+}
+
+.home-hero-image--text, .home-hero-image--button {
+    font-family: 'Merriweather', serif;
+    margin-block-start:auto;
+    color: white;
+}
+
+.home-hero-image--button  {
+    border: white solid 1px;
+    width: fit-content;
+    padding: 0.5%;
+    margin-left: 20%;
 }
