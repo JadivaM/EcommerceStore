@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
@@ -25,10 +25,6 @@ body {
     height: 16em;
 }
 
-.MuiPaper-outlined {
-    border: none;
-}
-
 .product-card-text--title, .product-card-text--price {
     font-size: 0.85rem;
 }
@@ -37,10 +33,10 @@ body {
 .home-hero-image {
     background-image: url('./Images/oriento-NO4e9-oru8Q-unsplash.jpg');
     width: 100vw;
-    height: 90vh;
+    height: 70vh;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 40% 60%;
+    background-position: center;
 }
 
 .home-hero-image--text {
@@ -60,4 +56,11 @@ body {
     width: fit-content;
     padding: 0.5%;
     margin-left: 20%;
+}
+
+.navbar-title {
+    font-size: 1.6rem;
+    color: #000;
+    font-family: 'Thasadith', sans-serif;
+    padding-left: 0.5%;
 }
