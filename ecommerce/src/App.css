@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Merriweather', serif;
     padding: 0;
     margin: 0;
 }
@@ -25,4 +27,40 @@ body {
 
 .product-card-text--title, .product-card-text--price {
     font-size: 0.85rem;
+}
+
+
+.home-hero-image {
+    background-image: url('./Images/oriento-NO4e9-oru8Q-unsplash.jpg');
+    width: 100vw;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home-hero-image--text {
+    font-size: 3.5rem;
+    width: 35%;
+    padding: 10% 10% 0 10%;
+    margin-bottom: 2%;
+}
+
+.home-hero-image--text, .home-hero-image--button {
+    margin-block-start:auto;
+    color:rgba(0, 0, 0, 0.767);
+}
+
+.home-hero-image--button  {
+    border: rgba(0, 0, 0, 0.767) solid 1px;
+    width: fit-content;
+    padding: 0.5%;
+    margin-left: 20%;
+}
+
+.navbar-title {
+    font-size: 1.6rem;
+    color: #000;
+    font-family: 'Thasadith', sans-serif;
+    padding-left: 0.5%;
 }

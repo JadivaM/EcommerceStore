@@ -7,10 +7,9 @@ const Product = (props) => {
     <>
     <div className="product-card-container">
         <StylesProvider injectFirst>
-          <Card variant="outlined"
-          className="product-card">
-                <CardMedia className="product-card--image" image={props.image}  title={props.name} />
-                <CardContent className="product-card-text">
+          <Card variant="outlined" style={{border: 'none'}}>
+                <CardMedia image={props.image}  title={props.name} />
+                <CardContent>
                     <Typography gutterBottom variant="p" component="p" className="product-card-text--title">
                         {props.name}
                     </Typography>
