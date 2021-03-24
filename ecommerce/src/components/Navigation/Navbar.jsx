@@ -3,6 +3,7 @@ import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 
+
 const Navbar = () => {
 
     return (
@@ -10,17 +11,11 @@ const Navbar = () => {
         <div>
         <AppBar position="static" style={{backgroundColor: '#fff'}}>
         <Toolbar>
+         <IconButton edge="start" color="#000" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
           <Typography variant="p" className="navbar-title">
             Handmade Studio
-          </Typography>
-          <Typography variant="p" className="navbar-text">
-            Categories
-          </Typography>
-          <Typography variant="p" className="navbar-text">
-            New Arrivals
-          </Typography>
-          <Typography variant="p" className="navbar-text">
-            Sale
           </Typography>
         </Toolbar>
       </AppBar>
