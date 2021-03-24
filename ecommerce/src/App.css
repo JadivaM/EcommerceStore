@@ -58,9 +58,19 @@ body {
     margin-left: 20%;
 }
 
+.navbar-title, .navbar-text {
+    color: #000;
+}
+
 .navbar-title {
     font-size: 1.6rem;
-    color: #000;
-    font-family: 'Thasadith', sans-serif;
     padding-left: 0.5%;
+    font-family: 'Thasadith', sans-serif;
+    font-weight: 800;
+}
+
+.navbar-text {
+    font-size: 1.2rem;
+    font-weight: 100;
+    padding-left: 5%;
 }
