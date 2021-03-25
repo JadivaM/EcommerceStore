@@ -52,13 +52,30 @@ body {
 }
 
 .home-hero-image--button  {
-    border: rgba(0, 0, 0, 0.767) solid 1px;
-    width: fit-content;
-    padding: 0.8%;
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
     margin-left: 20%;
-    border-radius: 5%/10%;
-    background: transparent;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.767);
+    color: #ffffff;
+    font-size: 1rem;
     cursor: pointer;
+    text-align: center;
+}
+
+.home-hero-image--button:hover,
+.home-hero-image--button:focus {
+    background: rgba(0, 0, 0, 0.767);
+}
+
+.home-hero-image--button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+.home-hero-image--button:active {
+    transform: scale(0.99);
 }
 
 .navbar-title {
