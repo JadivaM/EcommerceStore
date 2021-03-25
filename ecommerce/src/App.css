@@ -65,3 +65,30 @@ body {
     font-weight: 800;
     color: #000;
 }
+
+.side-nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+    width: 30%;
+    height: auto;
+    border: 1px solid rgba(194, 192, 192, 0.301);
+}  
+
+
+.side-nav__links {
+    text-align: center;
+}
+
+.side-nav__links, .side-nav-title {
+    color: #000;
+    line-height: 2;
+}
+
+.side-nav-title {
+    display: flex;
+    justify-content: center;
+}
+
