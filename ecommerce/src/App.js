@@ -1,34 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import Product from './components/Products/Product';
-import { commerce } from './lib/commerce';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from './components/Home/Home';
+import Products from './components/Products/Products';
 
 const App = () => {
-  const [products, setProducts] = useState([])
 
-  const fetchProducts = () => {
-    try {
-      commerce.products.list().then((res) => {
-        setProducts(res.data);
-        console.log(res.data);
-      })
-    } catch(err) {
-      console.log(err)
-    }
-  }
-  
-  useEffect(() => {
-    fetchProducts();
-  }, []);
   
 
   return (
     <>
-    <div className="product-cards">
-    {products.map(product => (
-        <Product key={product.id} name={product.name} image={product.media.source} {...product} />
-      ))}
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/products" exact component={Products}/>
+      </Switch>
+    </Router>
     </>
   );
 }
