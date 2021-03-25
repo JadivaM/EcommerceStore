@@ -72,11 +72,14 @@ body {
     top: 0;
     background-color: #fff;
     z-index: 10;
-    width: 30%;
-    height: auto;
+    width: 25%;
+    height: 100vh;
     border: 1px solid rgba(194, 192, 192, 0.301);
 }  
 
+.exit-icon {
+    padding: 10%;
+}
 
 .side-nav__links {
     text-align: center;
