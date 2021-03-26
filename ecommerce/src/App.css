@@ -39,15 +39,31 @@ body {
     background-position: center;
 }
 
+.home-hero-image-contents-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.home-hero-image-contents {
+    display: flex;
+    margin-right: auto;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: fit-content;
+    height: auto;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
 .home-hero-image--text {
-    font-size: 3.5rem;
-    width: 35%;
-    padding: 10% 10% 0 10%;
-    margin-bottom: 2%;
+    font-size: 3.8rem;
+    margin-bottom: 5%;
+    text-align: center;
 }
 
 .home-hero-image--text, .home-hero-image--button {
-    margin-block-start: auto;
     color:rgba(0, 0, 0, 0.767);
 }
 
@@ -55,7 +71,6 @@ body {
     display: inline-block;
     border: none;
     padding: 1rem 2rem;
-    margin-left: 20%;
     text-decoration: none;
     background: rgba(0, 0, 0, 0.767);
     color: #ffffff;
