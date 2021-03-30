@@ -16,9 +16,11 @@ const NavOptions = (props) => {
             <Typography variant="p" className="navbar-title side-nav-title">
             Handmade Studio
             </Typography>
-            <p className="side-nav__links">Categories</p>
-            <p className="side-nav__links">New arrivals</p>
-            <p className="side-nav__links">Sale</p>
+            <p className="side-nav__links">Bathroom</p>
+            <p className="side-nav__links">Bedroom</p>
+            <p className="side-nav__links">Home</p>
+            <p className="side-nav__links">Kitchen</p>
+            <p className="side-nav__links">Outdoor</p>
             </div>
         </div>
         </>
