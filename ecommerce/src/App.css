@@ -115,14 +115,22 @@ body {
     padding: 10%;
 }
 
-.side-nav__links {
-    text-align: center;
-    cursor: pointer;
+.side-nav-container-links {
+    list-style-type: none;
 }
 
-.side-nav__links, .side-nav-title {
+.side-nav-links {
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.side-nav-links:hover {
+    color:rgba(31, 30, 30, 0.678);
+}
+
+.side-nav-links, .side-nav-title {
     color: #000;
-    line-height: 2;
+    line-height: 2.5;
 }
 
 .side-nav-title {
