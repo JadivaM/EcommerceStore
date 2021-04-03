@@ -1,8 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { commerce } from '../../lib/commerce';
 import ClearIcon from '@material-ui/icons/Clear';
 import { IconButton, Typography } from '@material-ui/core';
 
 const NavOptions = (props) => {
+    const [categories, setCategories ] = useState([])
+    
+    const getCategories = () => {
+        try {
+            commerce.categories.list().then((categories) => {
+                setCategories(categories.data);
+                console.log(categories);
+          })
+        } catch(err) {
+          console.log(err)
+        }
+      }
+
+    useEffect(() => {
+        getCategories();
+      }, []);
 
    
 
@@ -12,16 +29,16 @@ const NavOptions = (props) => {
         <IconButton  color="#000" aria-label="exit">
             <ClearIcon className="exit-icon" onClick={props.closeNav} />
           </IconButton>
-          <div className="side-nav-container-links">
+          <div className="side-nav-main-container">
             <Typography variant="p" className="navbar-title side-nav-title">
             Handmade Studio
             </Typography>
-            <p className="side-nav__links">Bathroom</p>
-            <p className="side-nav__links">Bedroom</p>
-            <p className="side-nav__links">Home</p>
-            <p className="side-nav__links">Kitchen</p>
-            <p className="side-nav__links">Outdoor</p>
-            </div>
+            <ul className="side-nav-container-links">
+            {categories.map((category) => (
+            <li className="side-nav-links">{category.name}</li>
+            ))}
+           </ul>
+        </div>
         </div>
         </>
     )
