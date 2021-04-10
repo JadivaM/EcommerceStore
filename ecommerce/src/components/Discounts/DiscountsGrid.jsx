@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import DiscountCards from './DiscountCards';
 
 const DiscountsGrid = () => {
     const [discounts, setDiscounts ] = useState([]);
@@ -33,11 +34,12 @@ const getDiscounts = () => {
 
     return (
         <>
-        <div>
-            <h1>Discounts</h1>
         <div className="discount-grid-container">
+        <div className="discount-grid">
             {discounts.map((discount) => (
-            <div className="discount-grid-item" key={discount.id}>{discount.code} {discount.value}%</div>
+            <div className="discount-grid-item" > 
+            <DiscountCards key={discount.id} code={discount.code} value={discount.value} discountId={discount.id}/>
+            </div>
             ))}
            
         </div>
