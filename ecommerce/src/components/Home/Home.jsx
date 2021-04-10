@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Navigation/Navbar';
 import {Link}from 'react-router-dom';
+import DiscountsGrid from '../Discounts/DiscountsGrid';
 
 const Home = () => {
 
@@ -18,6 +19,7 @@ const Home = () => {
                 </div>
                 </div>
             </div>
+            <DiscountsGrid />
         </div>
         </>
     )
