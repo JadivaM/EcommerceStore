@@ -137,3 +137,35 @@ body {
     justify-content: center;
 }
 
+.discount-grid {
+    display: flex;
+    justify-content: space-evenly;
+    height: auto;
+    width: 80vw;
+    margin: auto;
+}
+
+.discount-card {
+    display: flex;
+    height: 5%;
+    position: relative;
+}
+
+.discount-card-text {
+text-align: center;
+}
+
+.copy-icon-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.copy-icon {
+    cursor: pointer;
+}
+
+.copy-icon-container:hover {
+    background-color: rgba(167, 164, 164, 0.315);
+    border-radius: 50%;
+}
