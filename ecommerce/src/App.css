@@ -169,3 +169,15 @@ text-align: center;
     background-color: rgba(167, 164, 164, 0.315);
     border-radius: 50%;
 }
+
+.product-info-container {
+    position: relative;
+}
+
+.add-to-cart-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 10px;
+    cursor: pointer;
+}
