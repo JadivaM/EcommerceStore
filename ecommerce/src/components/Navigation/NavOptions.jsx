@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import ClearIcon from '@material-ui/icons/Clear';
 import { IconButton, Typography } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const NavOptions = (props) => {
     const [categories, setCategories ] = useState([])
+
     
     const getCategories = () => {
         try {
@@ -16,6 +18,7 @@ const NavOptions = (props) => {
           console.log(err)
         }
       }
+
 
     useEffect(() => {
         getCategories();
@@ -35,7 +38,9 @@ const NavOptions = (props) => {
             </Typography>
             <ul className="side-nav-container-links">
             {categories.map((category) => (
+            <Link to={`category/products/${category.slug}`}>
             <li className="side-nav-links">{category.name}</li>
+            </Link>
             ))}
            </ul>
         </div>
