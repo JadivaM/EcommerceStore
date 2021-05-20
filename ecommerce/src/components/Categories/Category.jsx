@@ -27,8 +27,13 @@ useEffect(() => {
     return (
         <>
             <Navbar />
-            <div>
+            <div className="products-category-info-container">
+            <p className="products-category-slug">{id}</p>
+            <p className="products-category-results">{categoryProducts?.length} results</p>
+            </div>
+            <div className="category-product-cards">
              {categoryProducts?.map((product) => (
+
                  <Product key={product.id} name={product.name} image={product.media.source} {...product} />
              ))}
              </div>
