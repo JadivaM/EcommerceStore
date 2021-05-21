@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
-import Product from './Product';
+import ProductCard from './ProductCard';
 import Navbar from '../Navigation/Navbar';
 
 const Products = () => {
@@ -27,7 +27,7 @@ const Products = () => {
         <Navbar />
         <div className="product-cards">
         {products.map(product => (
-        <Product key={product.id} name={product.name} image={product.media.source} {...product} />
+        <ProductCard key={product.id} name={product.name} image={product.media.source} id={product.id} {...product} />
         ))}  
         </div>
         </div>
