@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-.product-cards {
+.product-cards, .category-product-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -180,4 +180,19 @@ text-align: center;
     top: 0;
     padding-top: 10px;
     cursor: pointer;
+}
+
+.products-category-info-container {
+    display: flex;
+    align-items: center;
+}
+
+.products-category-slug {
+    margin-right: 20px;
+    font-size: 1.5rem;
+}
+
+.products-category-results {
+    color: rgba(71, 70, 70, 0.89);
+    
 }
