@@ -1,9 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url(./Fonts/Poppins-Regular.ttf);
+  }
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+  @font-face {
+    font-family: 'Poppins-Light';
+    src: url(./Fonts/Poppins-Light.ttf);
+  }
+
+  @font-face {
+    font-family: 'Poppins-Medium';
+    src: url(./Fonts/Poppins-Medium.ttf);
+  }
 
 body {
-    font-family: 'Merriweather', sans-serif;
+    font-family: 'Poppins-Regular', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -23,6 +34,10 @@ body {
 .MuiCardMedia-root {
     width: 16em;
     height: 16em;
+}
+
+.product-card-text--title {
+    font-family: 'Poppins-Medium';
 }
 
 .product-card-text--title, .product-card-text--price {
@@ -58,6 +73,7 @@ body {
 }
 
 .home-hero-image--text {
+    font-family: 'Poppins-Medium';
     font-size: 3.8rem;
     margin-bottom: 5%;
     text-align: center;
@@ -95,8 +111,7 @@ body {
 
 .navbar-title {
     font-size: 1.6rem;
-    font-family: 'Thasadith', sans-serif;
-    font-weight: 800;
+    font-family: 'Poppins-Light';
     color: #000;
 }
 
