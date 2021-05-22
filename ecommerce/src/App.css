@@ -208,6 +208,51 @@ text-align: center;
 }
 
 .products-category-results {
-    color: rgba(71, 70, 70, 0.89);
-    
+    color: rgba(71, 70, 70, 0.89);   
+}
+
+.product-info-main-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+    width: 100vw;
+}
+
+.product-info-first-column {
+    width: 40%;
+}
+
+.product-info-second-column {
+    width: 40%;
+}
+
+.product-info-third-column {
+    margin-block-start: 0;
+}
+
+.product-info-name {
+    font-size: 1.3rem;
+    font-family: 'Poppins-Medium';
+    margin-block-start: auto;
+}
+
+.product-info-image {
+    width: 100%;
+    height: 800px;
+    object-fit: contain;
+}
+
+.reviews-container {
+    display: flex;
+    align-items: center;
+}
+
+.no-reviews-text {
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.product-info-free-shipping, .no-reviews-text {
+    color:rgba(71, 70, 70, 0.89);
 }
