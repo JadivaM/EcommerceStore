@@ -3,7 +3,6 @@ import { commerce } from '../../lib/commerce';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navigation/Navbar';
 import Rating from '@material-ui/lab/Rating';
-import { Divider } from '@material-ui/core';
 import AddToCartButton from '../Cart/AddToCartButton';
 
 const ProductPage = () => {
