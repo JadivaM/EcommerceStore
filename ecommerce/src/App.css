@@ -115,6 +115,11 @@ body {
     color: #000;
 }
 
+.shopping-basket-icon {
+    position: absolute;
+    right: 0;
+}
+
 .side-nav {
     position: absolute;
     left: 0;
@@ -255,4 +260,24 @@ text-align: center;
 
 .product-info-free-shipping, .no-reviews-text {
     color:rgba(71, 70, 70, 0.89);
+}
+
+.shopping-cart-products-main-container {
+    width: 70vw;
+}
+
+.shopping-cart-items-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+}
+
+.shopping-cart-items-column {
+    margin-left: 30px;
+    width: 20%;
+}
+
+#shopping-cart-item-divider {
+    width: 85%;
+    margin: auto;
 }
