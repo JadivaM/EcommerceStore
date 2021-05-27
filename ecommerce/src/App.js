@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/products" exact component={Products}/>
         <Route path="/category/products/:id" exact component={Category}/>
         <Route path="/product/:id" exact component={ProductPage}/>
-        <Route path="/cart/:id" exact component={ShoppingCart}/>
+        <Route path="/cart" exact component={ShoppingCart}/>
       </Switch>
     </Router>
     </>
