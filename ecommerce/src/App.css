@@ -1,9 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url(./Fonts/Poppins-Regular.ttf);
+  }
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+  @font-face {
+    font-family: 'Poppins-Light';
+    src: url(./Fonts/Poppins-Light.ttf);
+  }
+
+  @font-face {
+    font-family: 'Poppins-Medium';
+    src: url(./Fonts/Poppins-Medium.ttf);
+  }
 
 body {
-    font-family: 'Merriweather', sans-serif;
+    font-family: 'Poppins-Regular', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -23,6 +34,10 @@ body {
 .MuiCardMedia-root {
     width: 16em;
     height: 16em;
+}
+
+.product-card-text--title {
+    font-family: 'Poppins-Medium';
 }
 
 .product-card-text--title, .product-card-text--price {
@@ -58,6 +73,7 @@ body {
 }
 
 .home-hero-image--text {
+    font-family: 'Poppins-Medium';
     font-size: 3.8rem;
     margin-bottom: 5%;
     text-align: center;
@@ -95,9 +111,13 @@ body {
 
 .navbar-title {
     font-size: 1.6rem;
-    font-family: 'Thasadith', sans-serif;
-    font-weight: 800;
+    font-family: 'Poppins-Light';
     color: #000;
+}
+
+.shopping-basket-icon {
+    position: absolute;
+    right: 0;
 }
 
 .side-nav {
@@ -193,6 +213,71 @@ text-align: center;
 }
 
 .products-category-results {
-    color: rgba(71, 70, 70, 0.89);
-    
+    color: rgba(71, 70, 70, 0.89);   
+}
+
+.product-info-main-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+    width: 100vw;
+}
+
+.product-info-first-column {
+    width: 40%;
+}
+
+.product-info-second-column {
+    width: 40%;
+}
+
+.product-info-third-column {
+    margin-block-start: 0;
+}
+
+.product-info-name {
+    font-size: 1.3rem;
+    font-family: 'Poppins-Medium';
+    margin-block-start: auto;
+}
+
+.product-info-image {
+    width: 100%;
+    height: 800px;
+    object-fit: contain;
+}
+
+.reviews-container {
+    display: flex;
+    align-items: center;
+}
+
+.no-reviews-text {
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.product-info-free-shipping, .no-reviews-text {
+    color:rgba(71, 70, 70, 0.89);
+}
+
+.shopping-cart-products-main-container {
+    width: 70vw;
+}
+
+.shopping-cart-items-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+}
+
+.shopping-cart-items-column {
+    margin-left: 30px;
+    width: 20%;
+}
+
+#shopping-cart-item-divider {
+    width: 85%;
+    margin: auto;
 }

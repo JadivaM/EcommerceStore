@@ -5,11 +5,9 @@ import Home from './components/Home/Home';
 import Products from './components/Products/Products';
 import Category from './components/Categories/Category';
 import ProductPage from './components/Products/ProductPage';
+import ShoppingCart from './components/Cart/ShoppingCart';
 
 const App = () => {
-
-  
-
   return (
     <>
     <Router>
@@ -18,6 +16,7 @@ const App = () => {
         <Route path="/products" exact component={Products}/>
         <Route path="/category/products/:id" exact component={Category}/>
         <Route path="/product/:id" exact component={ProductPage}/>
+        <Route path="/cart" exact component={ShoppingCart}/>
       </Switch>
     </Router>
     </>

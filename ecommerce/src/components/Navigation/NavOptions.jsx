@@ -23,7 +23,6 @@ const NavOptions = (props) => {
 
     useEffect(() => {
         getCategories();
-        console.log(location.pathname);
       }, []);
 
    
