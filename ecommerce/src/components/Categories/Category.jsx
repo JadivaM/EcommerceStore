@@ -9,19 +9,17 @@ const [categoryProducts, setCategoryProducts] = useState(null)
 const { id } = useParams();
 const location = useLocation();
 
-const getCategory = () => {
-        try {
-            commerce.products.list({'category_slug': [`${id}`]}).then((res) => {
-            setCategoryProducts(res.data); 
-              console.log(res.data);
-            })
-          } catch(err) {
-            console.log(err)
-          }
-        }
-
-
 useEffect(() => {
+  const getCategory = () => {
+    try {
+        commerce.products.list({'category_slug': [`${id}`]}).then((res) => {
+        setCategoryProducts(res.data); 
+          console.log(res.data);
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    }
     getCategory();
 }, [location])
 

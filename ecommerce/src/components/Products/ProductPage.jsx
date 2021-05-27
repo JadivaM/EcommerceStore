@@ -10,26 +10,30 @@ const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
 
-    const getProduct = () => {
-        try {
-            commerce.products.retrieve(`${id}`).then((res) => {
-                setProductInfo(res); 
-                console.log(res);
-                })
+    useEffect(() => {
+        const getProduct = () => {
+            try {
+                commerce.products.retrieve(`${id}`).then((res) => {
+                    setProductInfo(res); 
+                    })
+            }
+            catch(err) {
+                console.log(err)
+            }
         }
-        catch(err) {
-            console.log(err)
-        }
-    }
+        getProduct()
+    }, [])
 
     const handleQuantityChange = (e) => {
-        setQuantity(e.target.value);
-        console.log(typeof(quantity));
+        try{
+            setQuantity(e.target.value);
+            console.log(quantity);
+        } catch(err) {
+            console.log(err)
+        }
       };
 
-    useEffect(() => {
-        getProduct();
-    }, [])
+    
 
     return (
         <>
