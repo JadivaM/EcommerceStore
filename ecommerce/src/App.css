@@ -115,9 +115,14 @@ body {
     color: #000;
 }
 
-.shopping-basket-icon {
+.add-to-cart-container {
     position: absolute;
     right: 0;
+    top: 0;
+}
+
+.shopping-basket-icon {
+    color: #000;
 }
 
 .side-nav {
@@ -192,14 +197,6 @@ text-align: center;
 
 .product-info-container {
     position: relative;
-}
-
-.add-to-cart-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding-top: 10px;
-    cursor: pointer;
 }
 
 .products-category-info-container {
