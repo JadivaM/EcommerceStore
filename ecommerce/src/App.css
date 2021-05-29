@@ -118,7 +118,7 @@ body {
 .add-to-cart-container {
     position: absolute;
     right: 0;
-    top: 0;
+    top: -40px;
 }
 
 .shopping-basket-icon {
