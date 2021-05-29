@@ -233,6 +233,7 @@ text-align: center;
 }
 
 .product-info-third-column {
+    width: 20%;
     margin-block-start: 0;
 }
 
@@ -321,4 +322,21 @@ text-align: center;
     margin-left: 100px;
     margin-bottom: 20px;
     font-size: 1.5rem;
+}
+
+
+.related-products-container {
+    width: 300px;
+    margin-left: 100px;
+}
+
+.related-products-image {
+    width: 130px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.related-products-name, .related-products-price {
+    font-size: 0.8rem;
+    margin-block-start: auto;
 }
