@@ -70,7 +70,7 @@ const ProductPage = () => {
               <option value="10">10</option>
             </select>
             <p className="product-info-free-shipping">Free shipping over $39</p>
-            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}/>
+            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}icon={`${"Add to cart"}`} color={"primary"}/>
             </div>
             <div className="product-info-third-column">
             {productInfo?.related_products?.map(relatedProduct => (
