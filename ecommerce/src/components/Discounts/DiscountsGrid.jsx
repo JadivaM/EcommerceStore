@@ -34,7 +34,7 @@ const DiscountsGrid = () => {
         <>
         <div className="discount-grid-container">
         <div className="discount-grid">
-            {discounts.map((discount) => (
+            {discounts?.map((discount) => (
             <div className="discount-grid-item" > 
             <DiscountCards key={discount.id} code={discount.code} value={discount.value} discountId={discount.id}/>
             </div>
