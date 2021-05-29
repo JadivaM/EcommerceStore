@@ -5,34 +5,38 @@ import Navbar from '../Navigation/Navbar';
 import CartTotal from '../Cart/CartTotal';
 
 const ShoppingCart = () => {
-    const [cartItem, setCartItem] = useState();
+    const [cartItem, setCartItem] = useState('');
 
-    const getCartItems = () => {
-        try {
-            commerce.cart.retrieve().then((res) => {
-                setCartItem(res); 
-                console.log(res);
-                })
-        }
-        catch(err) {
-            console.log(err)
-        }
-    }
-
+  
     useEffect(() => {
-        getCartItems();
+        const getCartItems = () => {
+            try {
+                commerce.cart.retrieve().then((res) => {
+                    setCartItem(res); 
+                    console.log(res);
+                    })
+            }
+            catch(err) {
+                console.log(err)
+            }
+        }
+        getCartItems()
     }, [])
 
     return (
         <div>
             <Navbar />
-            <p>cart</p>
+            <h1 className="cart-title">Shopping cart</h1>
             {cartItem ? 
             (<div className="shopping-cart-info-container">
             {cartItem.line_items.map(item => (
-            <CartProducts key={item.id} name={item.name} quantity={item.quantity} price={item.price.formatted_with_symbol} image={item.media.source}/>
+            <div className="cart-product-info-container">
+            <CartProducts key={item.id} name={item.name} quantity={item.quantity} price={item.price.formatted_with_symbol} image={item.media.source} id={item.id}/>
+            </div>
             ))} 
+            <div className="cart-total-container">
             <CartTotal key={cartItem?.id} subtotal={cartItem.subtotal.formatted_with_symbol} items={cartItem.total_items} />
+            </div>
             </div>)
             : <p>Cart is empty</p>}
             

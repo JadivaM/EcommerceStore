@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../Navigation/Navbar';
 import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
+import RelatedProducts from './RelatedProducts';
 
 const ProductPage = () => {
     const [productInfo, setProductInfo] = useState(null);
@@ -15,6 +16,7 @@ const ProductPage = () => {
             try {
                 commerce.products.retrieve(`${id}`).then((res) => {
                     setProductInfo(res); 
+                    console.log(res)
                     })
             }
             catch(err) {
@@ -22,7 +24,7 @@ const ProductPage = () => {
             }
         }
         getProduct()
-    }, [])
+    }, [id])
 
     const handleQuantityChange = (e) => {
         try{
@@ -68,10 +70,12 @@ const ProductPage = () => {
               <option value="10">10</option>
             </select>
             <p className="product-info-free-shipping">Free shipping over $39</p>
-            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}/>
+            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}icon={`${"Add to cart"}`} color={"primary"}/>
             </div>
             <div className="product-info-third-column">
-            <p>related products</p>
+            {productInfo?.related_products?.map(relatedProduct => (
+            <RelatedProducts key={relatedProduct.id} image={relatedProduct.media.source} name={relatedProduct.name} id={relatedProduct.id} price={relatedProduct.price.formatted_with_symbol}/>
+            ))}
             </div>
 
         </div>

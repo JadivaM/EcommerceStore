@@ -5,7 +5,7 @@ import NavOptions from './NavOptions';
 import {Link} from 'react-router-dom';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [wid, setWid] = useState(false);
 
   const closeSidenav = () => {
@@ -20,7 +20,7 @@ const Navbar = (props) => {
         <>
           {wid ? <NavOptions width={wid} closeNav={closeSidenav} /> : null}
         <div>
-        <AppBar position="relative" style={{backgroundColor: '#fff'}}> 
+        <AppBar position="static" style={{backgroundColor: '#fff'}}> 
         <Toolbar>
          <IconButton edge="start" color="#000" aria-label="menu">
             <MenuIcon className="hamburger-icon" onClick={openSidenav} />
@@ -31,7 +31,7 @@ const Navbar = (props) => {
           </Typography>
           </Link>
           <Link to={'/cart'} style={{textDecoration: 'none'}}>
-          <IconButton style={{position: 'absolute', right: 0, marginRight: 20, color: 'rgba(0, 0, 0, 0.8)'}}>
+          <IconButton style={{position: 'absolute', right: 0, top: 0, marginRight: 20, marginTop: 5, color: 'rgba(0, 0, 0, 0.8)'}}>
           <ShoppingBasketIcon />
           </IconButton>
           </Link>

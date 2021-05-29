@@ -26,8 +26,8 @@ const handleAddToCart = () => {
 
     return (
         <div>
-        <Button variant="contained" color="primary" onClick={handleAddToCart}>
-        Add to cart
+        <Button variant="contained" color={props.color} onClick={handleAddToCart}>
+        {props.icon}
         </Button>
         <ToastContainer
         position="bottom-right"
