@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import { useParams } from 'react-router-dom';
-import Navbar from '../Navigation/Navbar';
 import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
@@ -39,7 +38,6 @@ const ProductPage = () => {
 
     return (
         <>
-        <Navbar />
         <div className="product-info-main-container">
             <div className="product-info-first-column">
             <img className="product-info-image" src={productInfo?.media?.source} alt={productInfo?.name} />
