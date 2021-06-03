@@ -4,8 +4,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NavOptions from './NavOptions';
 import {Link} from 'react-router-dom';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import Searchbar from '../Search/Searchbar';
 
-const Navbar = () => {
+const Navbar = ({setSearchResults}) => {
   const [wid, setWid] = useState(false);
 
   const closeSidenav = () => {
@@ -30,6 +31,7 @@ const Navbar = () => {
             Handmade Studio
           </Typography>
           </Link>
+          <Searchbar setSearchResults={setSearchResults} />
           <Link to={'/cart'} style={{textDecoration: 'none'}}>
           <IconButton style={{position: 'absolute', right: 0, top: 0, marginRight: 20, marginTop: 5, color: 'rgba(0, 0, 0, 0.8)'}}>
           <ShoppingBasketIcon />
