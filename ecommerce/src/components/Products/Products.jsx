@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import ProductCard from './ProductCard';
-import Navbar from '../Navigation/Navbar';
 
 const Products = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
 
     const fetchProducts = () => {
       try {
@@ -16,7 +15,8 @@ const Products = () => {
         console.log(err)
       }
     }
-    
+
+
     useEffect(() => {
       fetchProducts();
     }, []);
@@ -24,12 +24,13 @@ const Products = () => {
     return (
         <>
         <div>
-        <Navbar />
         <div className="product-cards">
         {products.map(product => (
+        <div>
         <ProductCard key={product.id} name={product.name} image={product.media.source} id={product.id} {...product} />
+       </div>
         ))}  
-        </div>
+         </div>
         </div>
         </>
     )
