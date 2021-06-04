@@ -26,25 +26,28 @@ const Navbar = ({setSearchResults, totalItems}) => {
           {wid ? <NavOptions width={wid} closeNav={closeSidenav} /> : null}
         <div>
         <AppBar position="static" style={{backgroundColor: '#fff'}}> 
-        <Toolbar>
-         <IconButton edge="start" color="#000" aria-label="menu">
+        <Toolbar className="navbar">
+         <IconButton className="hamburger-icon-container" edge="start" color="#000" aria-label="menu">
             <MenuIcon className="hamburger-icon" onClick={openSidenav} />
           </IconButton>
+          <div className="navbar-searchbar"><Searchbar setSearchResults={setSearchResults} /></div>
+         
+          <div className="navbar-title-container">
           <Link to="/" style={{textDecoration: 'none'}}>
-          <Typography variant="p" className="navbar-title">
+          <p className="navbar-title">
             Handmade Studio
-          </Typography>
+          </p>
           </Link>
-          <Searchbar setSearchResults={setSearchResults} />
+          </div>
+         
           <Link to={'/cart'} style={{textDecoration: 'none'}}>
-          <IconButton style={{position: 'absolute', right: 0, top: 0, marginRight: 20, marginTop: 5, color: 'rgba(0, 0, 0, 0.8)'}}>
+          <IconButton style={{position: 'absolute', right: 0, top: 0, marginTop: 10, color: 'rgba(0, 0, 0, 0.8)'}}>
           <Badge badgeContent={totalItems} color="primary">
           <ShoppingCartIcon />
           </Badge>
           </IconButton>
           </Link>
         </Toolbar>
-
       </AppBar>
             
         </div>
