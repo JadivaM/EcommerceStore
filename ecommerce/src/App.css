@@ -1,20 +1,20 @@
 @font-face {
-    font-family: 'Poppins-Regular';
-    src: url(./Fonts/Poppins-Regular.ttf);
+    font-family: 'Roboto-Regular';
+    src: url(./Fonts/Roboto-Regular.ttf);
   }
 
   @font-face {
-    font-family: 'Poppins-Light';
-    src: url(./Fonts/Poppins-Light.ttf);
+    font-family: 'Roboto-Light';
+    src: url(./Fonts/Roboto-Light.ttf);
   }
 
   @font-face {
-    font-family: 'Poppins-Medium';
-    src: url(./Fonts/Poppins-Medium.ttf);
+    font-family: 'Roboto-Medium';
+    src: url(./Fonts/Roboto-Medium.ttf);
   }
 
 body {
-    font-family: 'Poppins-Regular', sans-serif;
+    font-family: 'Roboto-Regular', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .product-card-text--title {
-    font-family: 'Poppins-Medium';
+    font-family: 'Roboto-Medium';
 }
 
 .product-card-text--title, .product-card-text--price {
@@ -46,9 +46,10 @@ body {
 
 
 .home-hero-image {
-    background-image: url('./Images/oriento-NO4e9-oru8Q-unsplash.jpg');
-    width: 100vw;
+    background-image: url('./Images/home-hero-image.jpg');
+    width: 90vw;
     height: 70vh;
+    margin: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -62,37 +63,31 @@ body {
 
 .home-hero-image-contents {
     display: flex;
-    margin-right: auto;
-    align-items: center;
-    justify-content: flex-start;
     flex-direction: column;
-    width: fit-content;
-    height: auto;
-    margin-top: 5%;
-    margin-left: 10%;
+    justify-content: center;
+    margin: auto;
 }
 
 .home-hero-image--text {
-    font-family: 'Poppins-Medium';
-    font-size: 3.8rem;
-    margin-bottom: 5%;
+    font-family: 'Roboto-Medium';
+    font-size: 3rem;
+    margin-top: 20%;
     text-align: center;
-}
-
-.home-hero-image--text, .home-hero-image--button {
-    color:rgba(0, 0, 0, 0.767);
+    color: #000;
+    margin-block-end: 5%;
 }
 
 .home-hero-image--button  {
-    display: inline-block;
     border: none;
     padding: 1rem 2rem;
     text-decoration: none;
-    background: rgba(0, 0, 0, 0.767);
+    background: #000;
     color: #ffffff;
     font-size: 1rem;
     cursor: pointer;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
 
 .home-hero-image--button:hover,
@@ -111,7 +106,7 @@ body {
 
 .navbar-title {
     font-size: 1.6rem;
-    font-family: 'Poppins-Light';
+    font-family: 'Roboto-Light';
     color: #000;
 }
 
@@ -236,7 +231,7 @@ text-align: center;
 
 .product-info-name {
     font-size: 1.3rem;
-    font-family: 'Poppins-Medium';
+    font-family: 'Roboto-Medium';
     margin-block-start: auto;
 }
 
