@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import {AppBar, Toolbar, Typography, IconButton, Badge} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NavOptions from './NavOptions';
 import {Link} from 'react-router-dom';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Searchbar from '../Search/Searchbar';
 
-const Navbar = ({setSearchResults}) => {
+const Navbar = ({setSearchResults, totalItems}) => {
   const [wid, setWid] = useState(false);
+
+  useEffect(() => {
+    console.log(totalItems)
+  }, [totalItems])
 
   const closeSidenav = () => {
     setWid(false)
@@ -34,7 +38,9 @@ const Navbar = ({setSearchResults}) => {
           <Searchbar setSearchResults={setSearchResults} />
           <Link to={'/cart'} style={{textDecoration: 'none'}}>
           <IconButton style={{position: 'absolute', right: 0, top: 0, marginRight: 20, marginTop: 5, color: 'rgba(0, 0, 0, 0.8)'}}>
-          <ShoppingBasketIcon />
+          <Badge badgeContent={totalItems} color="primary">
+          <ShoppingCartIcon />
+          </Badge>
           </IconButton>
           </Link>
         </Toolbar>
