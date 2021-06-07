@@ -5,9 +5,8 @@ import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
 
-const ProductPage = () => {
+const ProductPage = ({setQuantity, quantity}) => {
     const [productInfo, setProductInfo] = useState(null);
-    const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
 
     useEffect(() => {
@@ -15,7 +14,7 @@ const ProductPage = () => {
             try {
                 commerce.products.retrieve(`${id}`).then((res) => {
                     setProductInfo(res); 
-                    console.log(res)
+                    console.log(res.variant_groups)
                     })
             }
             catch(err) {
@@ -28,7 +27,6 @@ const ProductPage = () => {
     const handleQuantityChange = (e) => {
         try{
             setQuantity(e.target.value);
-            console.log(quantity);
         } catch(err) {
             console.log(err)
         }
@@ -48,6 +46,12 @@ const ProductPage = () => {
             <div className="reviews-container">
             <Rating size="small" name="read-only" value={null} readOnly />
             <p className="no-reviews-text">No reviews yet</p>
+            </div>
+            <p>{productInfo?.variant_groups?.name}</p>
+            <div>
+                {productInfo?.variant_groups?.options?.map((option) => {
+                    <p>{option.name}</p>
+                })}
             </div>
             <p className="product-info-desc">{productInfo?.description}</p>
             <select
@@ -71,6 +75,7 @@ const ProductPage = () => {
             <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}icon={`${"Add to cart"}`} color={"primary"}/>
             </div>
             <div className="product-info-third-column">
+            <p className="related-products-header">You may also like</p>
             {productInfo?.related_products?.map(relatedProduct => (
             <RelatedProducts key={relatedProduct.id} image={relatedProduct.media.source} name={relatedProduct.name} id={relatedProduct.id} price={relatedProduct.price.formatted_with_symbol}/>
             ))}
