@@ -79,7 +79,7 @@ body {
 
 .home-hero-image--button  {
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
     text-decoration: none;
     background: #000;
     color: #ffffff;
@@ -104,7 +104,7 @@ body {
     transform: scale(0.99);
 }
 
-.hamburger-icon, .hamburger-icon-container {
+.menu-icon, .hamburger-icon-container {
     visibility: hidden;
 }
 
@@ -119,14 +119,16 @@ body {
     position: absolute;
     left: 45%;
     top: 0;
-    font-size: 1.6rem;
-    font-family: 'Roboto-Light';
+    font-size: 1.8rem;
+    font-family: 'Roboto-medium';
     color: #000;
 }
 
 .navbar-searchbar {
     position: absolute;
     left: 0;
+    top:0;
+    padding-top: 25px;
 }
 
 .search-bar {
@@ -141,8 +143,6 @@ body {
 }
 
 .search-bar-input:focus {
-    box-shadow: none;
-    border: none;
     outline: none;
 }
 
@@ -163,23 +163,34 @@ body {
     color: #000;
 }
 
-.side-nav {
+.category-options-container {
+    padding-top: 40px;
+}
+
+.category-options {
     position: absolute;
-    left: 0;
-    top: 0;
-    background-color: #fff;
-    z-index: 10;
-    width: 25%;
-    height: 100vh;
-    border: 1px solid rgba(194, 192, 192, 0.301);
+    bottom: 0;
 }  
 
-.exit-icon {
-    padding: 10%;
+
+.category-links-container {
+    width: 100vw;
+    margin: auto;
+}
+
+.border {
+    border-bottom: #000 solid 2px;
+    width: 90vw;
+    margin: auto;
 }
 
 .side-nav-container-links {
+    width: 90vw;
+    margin: 5px;
+    padding: 0;
     list-style-type: none;
+    display: flex; 
+    justify-content: space-evenly;
 }
 
 .side-nav-links {
@@ -195,10 +206,6 @@ body {
     line-height: 2.5;
 }
 
-.side-nav-title {
-    display: flex;
-    justify-content: center;
-}
 
 .discount-grid {
     display: flex;
@@ -374,4 +381,33 @@ text-align: center;
 .related-products-name, .related-products-price {
     font-size: 0.8rem;
     margin-block-start: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .side-nav {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: #fff;
+        z-index: 10;
+        width: 25%;
+        height: 100vh;
+        border: 1px solid rgba(194, 192, 192, 0.301);
+    }  
+    .menu-icon {
+        padding: 10%;
+    }
+    .menu-icon, .hamburger-icon-container {
+        visibility:visible;
+    }
+    .category-links-container {
+        display: none;
+    }
+    
+    .border {
+        border: none;
+    }
+    .navbar-searchbar {
+        display: none;
+    }
 }
