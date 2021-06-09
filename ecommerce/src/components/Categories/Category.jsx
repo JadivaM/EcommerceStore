@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import { useParams, useLocation } from 'react-router-dom';
 import ProductCard from '../Products/ProductCard';
-import Navbar from '../Navigation/Navbar';
 
 const Category = () => {
 const [categoryProducts, setCategoryProducts] = useState(null)
@@ -21,11 +20,10 @@ useEffect(() => {
       }
     }
     getCategory();
-}, [location])
+}, [location.hash, id])
 
     return (
         <>
-            <Navbar />
             <div className="products-category-info-container">
             <p className="products-category-slug">{id}</p>
             <p className="products-category-results">{categoryProducts?.length} results</p>

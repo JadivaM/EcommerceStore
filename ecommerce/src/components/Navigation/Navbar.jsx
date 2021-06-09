@@ -1,42 +1,51 @@
-import React, { useState } from 'react';
-import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import React, { useState, useEffect } from 'react';
+import {AppBar, Toolbar, Typography, IconButton, Badge} from '@material-ui/core';
 import NavOptions from './NavOptions';
 import {Link} from 'react-router-dom';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Searchbar from '../Search/Searchbar';
+import DiscountsGrid from '../Discounts/DiscountsGrid';
 
-const Navbar = () => {
-  const [wid, setWid] = useState(false);
 
-  const closeSidenav = () => {
-    setWid(false)
-  }
 
-  const openSidenav = ( ) => {
-      setWid(!wid)
-   }
+
+const Navbar = ({setSearchResults, totalItems}) => {
+
+  useEffect(() => {
+    console.log(totalItems)
+  }, [totalItems])
 
     return (
-        <>
-          {wid ? <NavOptions width={wid} closeNav={closeSidenav} /> : null}
+        <> 
         <div>
         <AppBar position="static" style={{backgroundColor: '#fff'}}> 
-        <Toolbar>
-         <IconButton edge="start" color="#000" aria-label="menu">
-            <MenuIcon className="hamburger-icon" onClick={openSidenav} />
-          </IconButton>
+        <Toolbar className="navbar">
+          <div className="navbar-searchbar"><Searchbar setSearchResults={setSearchResults} /></div>
+         
+          <div className="navbar-title-container">
           <Link to="/" style={{textDecoration: 'none'}}>
-          <Typography variant="p" className="navbar-title">
+          <p className="navbar-title">
             Handmade Studio
-          </Typography>
+          </p>
           </Link>
+          </div>
+         
           <Link to={'/cart'} style={{textDecoration: 'none'}}>
-          <IconButton style={{position: 'absolute', right: 0, top: 0, marginRight: 20, marginTop: 5, color: 'rgba(0, 0, 0, 0.8)'}}>
-          <ShoppingBasketIcon />
+          <IconButton style={{position: 'absolute', right: 0, top: 0, marginTop: 25, color: 'rgba(0, 0, 0, 0.8)'}}>
+          <Badge badgeContent={totalItems} color="primary">
+          <ShoppingCartIcon />
+          </Badge>
           </IconButton>
           </Link>
+          <div className="category-options-container"> <NavOptions className="category-options" /></div>
         </Toolbar>
+       <div className="discounts-carousel-container">
 
+
+<DiscountsGrid className="discounts-carousel" />
+
+
+       </div>
       </AppBar>
             
         </div>
@@ -44,4 +53,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;

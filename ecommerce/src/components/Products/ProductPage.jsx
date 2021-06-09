@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import { useParams } from 'react-router-dom';
-import Navbar from '../Navigation/Navbar';
 import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
+// import CarouselSlide from 'react-material-ui-carousel';
+// import Card from '@material-ui/core/Card';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import Carousel from 'react-material-ui-carousel';
 
-const ProductPage = () => {
+const ProductPage = ({setQuantity, quantity}) => {
     const [productInfo, setProductInfo] = useState(null);
-    const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
 
     useEffect(() => {
@@ -16,7 +18,7 @@ const ProductPage = () => {
             try {
                 commerce.products.retrieve(`${id}`).then((res) => {
                     setProductInfo(res); 
-                    console.log(res)
+                    console.log(res.media)
                     })
             }
             catch(err) {
@@ -29,7 +31,6 @@ const ProductPage = () => {
     const handleQuantityChange = (e) => {
         try{
             setQuantity(e.target.value);
-            console.log(quantity);
         } catch(err) {
             console.log(err)
         }
@@ -39,10 +40,24 @@ const ProductPage = () => {
 
     return (
         <>
-        <Navbar />
         <div className="product-info-main-container">
             <div className="product-info-first-column">
             <img className="product-info-image" src={productInfo?.media?.source} alt={productInfo?.name} />
+            
+
+            {/* <Carousel> */}
+                {/* {productInfo?.media?.map(({image}) => ( */}
+                    {/* <CarouselSlide key={productInfo?.media}>
+                        <Card>
+                            <CardMedia
+                                image={productInfo?.media?.source}
+                            />
+                        </Card>
+                    </CarouselSlide>
+                ))
+            </Carousel> */}
+
+
             </div>
             <div className="product-info-second-column">
             <p className="product-info-name">{productInfo?.name}</p>
@@ -51,6 +66,12 @@ const ProductPage = () => {
             <Rating size="small" name="read-only" value={null} readOnly />
             <p className="no-reviews-text">No reviews yet</p>
             </div>
+            {/* <p>{productInfo?.variant_groups?.name}</p>
+            <div>
+                {productInfo?.variant_groups?.options?.map((option) => {
+                    <p>{option.name}</p>
+                })}
+            </div> */}
             <p className="product-info-desc">{productInfo?.description}</p>
             <select
               className="quantity-dropdown"
@@ -73,6 +94,7 @@ const ProductPage = () => {
             <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}icon={`${"Add to cart"}`} color={"primary"}/>
             </div>
             <div className="product-info-third-column">
+            <p className="related-products-header">You may also like</p>
             {productInfo?.related_products?.map(relatedProduct => (
             <RelatedProducts key={relatedProduct.id} image={relatedProduct.media.source} name={relatedProduct.name} id={relatedProduct.id} price={relatedProduct.price.formatted_with_symbol}/>
             ))}
