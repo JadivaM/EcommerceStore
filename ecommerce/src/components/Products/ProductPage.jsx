@@ -4,6 +4,10 @@ import { useParams } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
+// import CarouselSlide from 'react-material-ui-carousel';
+// import Card from '@material-ui/core/Card';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import Carousel from 'react-material-ui-carousel';
 
 const ProductPage = ({setQuantity, quantity}) => {
     const [productInfo, setProductInfo] = useState(null);
@@ -14,7 +18,7 @@ const ProductPage = ({setQuantity, quantity}) => {
             try {
                 commerce.products.retrieve(`${id}`).then((res) => {
                     setProductInfo(res); 
-                    console.log(res.variant_groups)
+                    console.log(res.media)
                     })
             }
             catch(err) {
@@ -39,6 +43,21 @@ const ProductPage = ({setQuantity, quantity}) => {
         <div className="product-info-main-container">
             <div className="product-info-first-column">
             <img className="product-info-image" src={productInfo?.media?.source} alt={productInfo?.name} />
+            
+
+            {/* <Carousel> */}
+                {/* {productInfo?.media?.map(({image}) => ( */}
+                    {/* <CarouselSlide key={productInfo?.media}>
+                        <Card>
+                            <CardMedia
+                                image={productInfo?.media?.source}
+                            />
+                        </Card>
+                    </CarouselSlide>
+                ))
+            </Carousel> */}
+
+
             </div>
             <div className="product-info-second-column">
             <p className="product-info-name">{productInfo?.name}</p>
@@ -47,12 +66,12 @@ const ProductPage = ({setQuantity, quantity}) => {
             <Rating size="small" name="read-only" value={null} readOnly />
             <p className="no-reviews-text">No reviews yet</p>
             </div>
-            <p>{productInfo?.variant_groups?.name}</p>
+            {/* <p>{productInfo?.variant_groups?.name}</p>
             <div>
                 {productInfo?.variant_groups?.options?.map((option) => {
                     <p>{option.name}</p>
                 })}
-            </div>
+            </div> */}
             <p className="product-info-desc">{productInfo?.description}</p>
             <select
               className="quantity-dropdown"
