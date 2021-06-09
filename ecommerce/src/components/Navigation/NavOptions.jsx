@@ -1,12 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import ClearIcon from '@material-ui/icons/Clear';
+import MenuIcon from '@material-ui/icons/Menu';
 import { IconButton, Typography } from '@material-ui/core';
 import {Link, useLocation} from 'react-router-dom';
 
 const NavOptions = (props) => {
     const [categories, setCategories ] = useState([])
+    const [click, setClick] = useState(false);
     const location = useLocation();
+
+    const closeSidenav = () => {
+      setClick(false)
+    }
+  
+    const openSidenav = ( ) => {
+        setClick(!click)
+     }
+  
     
     const getCategories = async () => {
         try {
@@ -30,13 +41,14 @@ const NavOptions = (props) => {
     return (
         <>
         <div className='side-nav'>
-        <IconButton  color="#000" aria-label="exit">
-            <ClearIcon className="exit-icon" onClick={props.closeNav} />
-          </IconButton>
+          {click ? ( <IconButton className="hamburger-icon-container" edge="start" color="#000" aria-label="exit">
+            <ClearIcon className="menu-icon" onClick={closeSidenav} />
+          </IconButton>) : ( <IconButton className="hamburger-icon-container" edge="start" color="#000" aria-label="menu">
+            <MenuIcon className="menu-icon" onClick={openSidenav} />
+          </IconButton>)}
+       
           <div className="side-nav-main-container">
-            <Typography variant="p" className="navbar-title side-nav-title">
-            Handmade Studio
-            </Typography>
+            <div className="category-links-container">
             <ul className="side-nav-container-links">
             {categories.map((category) => (
             <Link to={`/category/products/${category.slug}`} replace={location.pathname === "/"}>
@@ -44,6 +56,7 @@ const NavOptions = (props) => {
             </Link>
             ))}
            </ul>
+           </div>
         </div>
         </div>
         </>
