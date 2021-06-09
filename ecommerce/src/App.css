@@ -115,6 +115,7 @@ body {
 }
 
 
+
 .navbar-title {
     position: absolute;
     left: 45%;
@@ -177,11 +178,27 @@ body {
     width: 100vw;
     margin: auto;
 }
+.discount-text-carousel {
+    color: #000;
+    text-align: center;
+    font-weight: 800;
+}
 
-.border {
-    border-bottom: #000 solid 2px;
-    width: 90vw;
-    margin: auto;
+.discounts-carousel-container {
+    border-top: #000 solid 2px;
+    position: relative;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: rgba(169, 169, 169, 0.493);
+}
+
+
+.discounts-carousel {
+    position: absolute;
+    top: 0;
+    color: #000;
+    z-index: 10;
 }
 
 .side-nav-container-links {
@@ -204,40 +221,6 @@ body {
 .side-nav-links, .side-nav-title {
     color: #000;
     line-height: 2.5;
-}
-
-
-.discount-grid {
-    display: flex;
-    justify-content: space-evenly;
-    height: auto;
-    width: 80vw;
-    margin: auto;
-}
-
-.discount-card {
-    display: flex;
-    height: 5%;
-    position: relative;
-}
-
-.discount-card-text {
-text-align: center;
-}
-
-.copy-icon-container {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.copy-icon {
-    cursor: pointer;
-}
-
-.copy-icon-container:hover {
-    background-color: rgba(167, 164, 164, 0.315);
-    border-radius: 50%;
 }
 
 .product-info-container {
