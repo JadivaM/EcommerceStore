@@ -65,10 +65,12 @@ const ProductPage = ({setQuantity, quantity}) => {
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
+            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity} icon={`${"Add to cart"}`} className={"product-page-add-to-cart-btn"}/>
             <p className="product-info-free-shipping">Free shipping over $39</p>
-            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity}icon={`${"Add to cart"}`} color={"primary"}/>
-            <p>Details</p>
+            <div className="product-page-details">
+            <p className="product-page-details-text">Details</p>
             <p className="product-info-desc">{productInfo?.description}</p>
+            </div>
             </div>
         </div>
         <div className="product-page-related-products-section">
