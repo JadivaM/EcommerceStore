@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { commerce } from '../../lib/commerce';
-import Button from '@material-ui/core/Button';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,9 +25,7 @@ const handleAddToCart = () => {
 
     return (
         <div>
-        <Button variant="contained" color={props.color} onClick={handleAddToCart}>
-        {props.icon}
-        </Button>
+            <button onClick={handleAddToCart} className={props.className}> {props.icon}</button>
         <ToastContainer
         position="bottom-right"
         autoClose={4000}

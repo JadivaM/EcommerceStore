@@ -12,7 +12,7 @@ const ProductCard = (props) => {
           <Card className="product-card-image" variant="outlined" style={{border: 'none'}}>
                 <CardMedia image={props.image}  title={props.name} />
                 <CardContent className="product-info-container">
-                    <Link to={`/product/${props.id}`}>
+                    <Link to={`/product/${props.id}`} style={{color: '#000', textDecoration: 'none'}}>
                     <Typography gutterBottom variant="p" component="p" className="product-card-text--title">
                         {props.name}
                     </Typography>
@@ -21,7 +21,7 @@ const ProductCard = (props) => {
                         {props.price.formatted_with_symbol}
                     </Typography>
                 <div className="add-to-cart-container">
-                    <AddToCartButton id={props.id} quantity={1} icon={<AddShoppingCartIcon className="shopping-basket-icon"/>} color={"default"}/>
+                    <AddToCartButton className={"card-add-to-cart-btn"} id={props.id} quantity={1} icon={<AddShoppingCartIcon className="shopping-basket-icon"/>} color={"default"}/>
                 </div>
                 </CardContent>
             </Card>  
