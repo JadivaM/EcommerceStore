@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import DiscountCards from './DiscountCards';
+import CarouselSlide from 'react-material-ui-carousel';
+import Carousel from 'react-material-ui-carousel';
+
 
 const DiscountsGrid = () => {
     const [discounts, setDiscounts ] = useState([]);
@@ -32,16 +34,28 @@ const DiscountsGrid = () => {
 
     return (
         <>
-        <div className="discount-grid-container">
-        <div className="discount-grid">
-            {discounts?.map((discount) => (
-            <div className="discount-grid-item" > 
-            <DiscountCards key={discount.id} code={discount.code} value={discount.value} discountId={discount.id}/>
-            </div>
-            ))}
-           
-        </div>
-        </div>
+        <Carousel 
+        animation={'fade'}
+        indicators={false}
+        autoPlay={true}
+        stopAutoPlayOnHover={true}
+        interval={10000}
+        swipe={true}
+        navButtonsProps={{
+            style: {
+                backgroundColor: 'transparent',
+                color: 'black'
+            }
+        }}
+        >
+        {discounts?.map((discount) => (
+            <>
+        <CarouselSlide>
+              <p className="discount-text-carousel">{discount.value}% off {discount.code} with code {discount.code}</p>
+        </CarouselSlide>
+</>
+        ))}
+        </Carousel>
         </>
     )
 }
