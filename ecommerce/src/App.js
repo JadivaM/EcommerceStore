@@ -9,6 +9,7 @@ import Category from './components/Categories/Category';
 import ProductPage from './components/Products/ProductPage';
 import ShoppingCart from './components/Cart/ShoppingCart';
 import SearchResults from './components/Search/SearchResults';
+import CheckoutForm from './components/Checkout/CheckoutForm';
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -54,6 +55,9 @@ const handleRemoveItem = (itemId) => {
         </Route>
         <Route path="/results" exact>
           <SearchResults searchResults={searchResults} />
+        </Route>
+        <Route path="/checkout" exact>
+          <CheckoutForm />
         </Route>
       </Switch>
     </Router>
