@@ -9,21 +9,21 @@ import Category from './components/Categories/Category';
 import ProductPage from './components/Products/ProductPage';
 import ShoppingCart from './components/Cart/ShoppingCart';
 import SearchResults from './components/Search/SearchResults';
-import CheckoutForm from './components/Checkout/CheckoutForm';
+import CheckoutFormPage from './components/Checkout/CheckoutFormPage';
+import { toast } from 'react-toastify';
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const [cart, setCart] = useState();
   const [cartItem, setCartItem] = useState();
   const [cartTotal, setCartTotal] = useState();
 
-  const getCartItems = () => {
+  const getCartItems = async () => {
     try {
-        commerce.cart.retrieve().then((res) => {
+        await commerce.cart.retrieve().then((res) => {
             setCartItem(res); 
             setCartTotal(res.total_items)
-            console.log(res);
+            console.log(cartTotal);
             })
     }
     catch(err) {
@@ -34,6 +34,15 @@ const App = () => {
 const handleRemoveItem = (itemId) => {
     commerce.cart.remove(itemId).then(json => setCartItem(json.cart));
   }
+
+
+
+  const handleAddToCart = (productId, qty) => {
+        commerce.cart.add(productId, qty).then(res => {
+          setCartItem(res.cart)
+          setCartTotal(res.cart.totalItems)})
+          toast.success('Item added to cart!') 
+}
 
   useEffect(() => {
     getCartItems();
@@ -48,7 +57,7 @@ const handleRemoveItem = (itemId) => {
         <Route path="/products" exact component={Products}/>
         <Route path="/category/products/:id" exact component={Category}/>
         <Route path="/product/:id" exact>
-        <ProductPage quantity={quantity} setQuantity={setQuantity} />
+        <ProductPage quantity={quantity} setQuantity={setQuantity} onAdd={handleAddToCart} />
         </Route>
         <Route path="/cart" exact>
           <ShoppingCart quantity={quantity} setQuantity={setQuantity} setCartItem={setCartItem} cartItem={cartItem} onRemove={handleRemoveItem}/>
@@ -57,7 +66,7 @@ const handleRemoveItem = (itemId) => {
           <SearchResults searchResults={searchResults} />
         </Route>
         <Route path="/checkout" exact>
-          <CheckoutForm />
+          <CheckoutFormPage cartItem={cartItem} />
         </Route>
       </Switch>
     </Router>
