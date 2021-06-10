@@ -37,7 +37,7 @@ const CartProducts = ({ item, setQuantity, onRemove}) => {
             <div className="shopping-cart-items-column">
             <p>Quantity:</p>
             <form onSubmit={handleSubmit}>
-            <input type="text" onChange={handleQuantityChange} defaultValue={item.quantity} />
+            <input type="text" onChange={handleQuantityChange} defaultValue={item.quantity} className="cart-quantity-input"/>
             <Button type="submit">Update</Button>
             </form>
             </div>
