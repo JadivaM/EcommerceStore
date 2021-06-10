@@ -6,7 +6,7 @@ import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
 
 
-const ProductPage = ({setQuantity, quantity}) => {
+const ProductPage = ({setQuantity, quantity, onAdd}) => {
     const [productInfo, setProductInfo] = useState(null);
     const { id } = useParams();
 
@@ -51,7 +51,7 @@ const ProductPage = ({setQuantity, quantity}) => {
             <select
               className="quantity-dropdown"
               name="quantity"
-              value={quantity.value}
+              value={quantity}
               onChange={handleQuantityChange}
             >
               <option value="1">1</option>
@@ -65,7 +65,7 @@ const ProductPage = ({setQuantity, quantity}) => {
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-            <AddToCartButton key={productInfo?.id} id={productInfo?.id} quantity={quantity} icon={`${"Add to cart"}`} className={"product-page-add-to-cart-btn"}/>
+            <AddToCartButton key={productInfo?.id} productInfo={productInfo} quantity={quantity} onAdd={onAdd}/>
             <p className="product-info-free-shipping">Free shipping over $39</p>
             <div className="product-page-details">
             <p className="product-page-details-text">Details</p>
