@@ -25,7 +25,7 @@ useEffect(() => {
     return (
         <>
             <div className="products-category-info-container">
-            <p className="products-category-slug">{id}</p>
+            <p className="products-category-title">{id}</p>
             <p className="products-category-results">{categoryProducts?.length} results</p>
             </div>
             <div className="category-product-cards">
