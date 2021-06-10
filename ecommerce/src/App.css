@@ -241,8 +241,12 @@ body {
     font-weight: 800;
 }
 
-.products-category-results {
+.products-category-results, .product-search-results {
     color: rgba(71, 70, 70, 0.89);   
+}
+
+.product-search-results {
+    margin-left: 60px;
 }
 
 .product-info-main-container {
