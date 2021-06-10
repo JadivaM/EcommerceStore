@@ -446,7 +446,23 @@ body {
     opacity: 0.3;
 } 
 
+.checkout-button {
+    border: none;
+    width: 100%;
+    padding: 0.8rem;
+    text-decoration: none;
+    background: rgb(141, 37, 37);
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
 
+.cart-quantity-input {
+    width: 100px;
+    padding: 3px;
+}
 
 @media only screen and (max-width: 600px) {
     .side-nav {
