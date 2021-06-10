@@ -7,7 +7,7 @@ const Products = () => {
 
     const fetchProducts = () => {
       try {
-        commerce.products.list().then((res) => {
+        commerce.products.list({'limit': 200}).then((res) => {
           setProducts(res.data);
           console.log(res.data);
         })
@@ -23,7 +23,10 @@ const Products = () => {
     
     return (
         <>
-        <div>
+          <div className="products-category-info-container">
+        <p className="products-category-title">all products</p>
+        <p className="products-category-results">{products?.length} results</p>
+        </div>
         <div className="product-cards">
         {products.map(product => (
         <div>
@@ -31,7 +34,7 @@ const Products = () => {
        </div>
         ))}  
          </div>
-        </div>
+       
         </>
     )
 }
