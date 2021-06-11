@@ -5,7 +5,7 @@ const SearchResults = ({searchResults}) => {
     return (
         <>
         <div className="search-results-container">
-            {!searchResults || searchResults.length === 0 ? <p>No search Results found</p> :  <p className="products-category-results">{searchResults?.length} results</p>}
+            {!searchResults || searchResults.length === 0 ? <p className="products-category-title">No search Results found</p> :  <p className="product-search-results">{searchResults?.length} results</p>}
         </div>
         <div className="category-product-cards">
          {searchResults && searchResults?.map((product) => (

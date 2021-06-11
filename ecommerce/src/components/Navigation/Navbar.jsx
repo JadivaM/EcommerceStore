@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {AppBar, Toolbar, Typography, IconButton, Badge} from '@material-ui/core';
 import NavOptions from './NavOptions';
 import {Link} from 'react-router-dom';
@@ -10,10 +10,6 @@ import DiscountsGrid from '../Discounts/DiscountsGrid';
 
 
 const Navbar = ({setSearchResults, totalItems}) => {
-
-  useEffect(() => {
-    console.log(totalItems)
-  }, [totalItems])
 
     return (
         <> 
