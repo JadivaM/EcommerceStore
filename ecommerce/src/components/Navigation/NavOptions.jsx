@@ -51,7 +51,7 @@ const NavOptions = (props) => {
             <div className="category-links-container">
             <ul className="side-nav-container-links">
             {categories.map((category) => (
-            <Link to={`/category/products/${category.slug}`} replace={location.pathname === "/"}>
+            <Link to={`/category/products/${category.slug}`} replace={location.pathname === "/"} style={{textDecoration: 'none'}}>
             <li className="side-nav-links">{category.name}</li>
             </Link>
             ))}
