@@ -19,7 +19,7 @@ const Searchbar = ({setSearchResults}) => {
         <div>
             <form className="search-bar" onSubmit={handleSubmit}>
             <input placeholder="search" className="search-bar-input" type="text" onChange={(e) => setSearch(e.target.value)} />
-            <SearchIcon className="search-bar-icon"/>
+            <SearchIcon onClick={handleSubmit} className="search-bar-icon"/>
             </form>
         </div> 
     )
