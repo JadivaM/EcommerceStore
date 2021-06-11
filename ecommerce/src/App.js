@@ -66,7 +66,7 @@ const handleRemoveItem = (itemId) => {
           <SearchResults searchResults={searchResults} />
         </Route>
         <Route path="/checkout" exact>
-          <CheckoutFormPage cartItem={cartItem} />
+          <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} />
         </Route>
       </Switch>
     </Router>
