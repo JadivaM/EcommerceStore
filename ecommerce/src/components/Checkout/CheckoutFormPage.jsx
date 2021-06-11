@@ -10,7 +10,7 @@ import PaymentDetailsForm from '../Checkout/PaymentDetailsForm';
 import ReviewCheckoutInformation from '../Checkout/ReviewCheckoutInformation';
 
 
-const CheckoutFormPage = ({cartItem}) => {
+const CheckoutFormPage = ({cartItem, setCartItem, setCartTotal}) => {
     const [formData, setFormData] = useState([]);
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
@@ -35,19 +35,19 @@ const CheckoutFormPage = ({cartItem}) => {
 
 
     const getSteps = () => {
-        return ['Shipping information', 'Payment details', 'Review & checkout'];
+        return ['Shipping information'];
       }
 
       function getStepContent(step) {
         switch (step) {
           case 0:
             return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
-          case 1:
-            return (<PaymentDetailsForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
-          case 2:
-            return <ReviewCheckoutInformation checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />;
-          default:
-            return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
+          // case 1:
+          //   return (<PaymentDetailsForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
+          // case 1:
+          //   return <ReviewCheckoutInformation checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} cartItem={cartItem} />;
+          // default:
+          //   return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
         }
       }
 
@@ -57,14 +57,14 @@ const CheckoutFormPage = ({cartItem}) => {
 
     const handleNext = () => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      commerce.cart.empty().then((response) => {
+      setCartItem(response.cart)
+      setCartTotal(response.cart.totalItems)});
     };
 
-    const handleBack = () => {
-      setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-
-
+    // const handleBack = () => {
+    //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    // };
 
     return (
         <div className="checkout-stepper-container">
@@ -77,18 +77,17 @@ const CheckoutFormPage = ({cartItem}) => {
       </Stepper>
       <div>
         {activeStep === steps.length ? (
-          <div>
-            All steps completed
-            <Button>Reset</Button>
+          <div style={{textAlign: 'center'}}>
+           Your order is confirmed.
           </div>
         ) : (
           <div  className="checkout-step">
             {getStepContent(activeStep)}<div>
-              <Button disabled={activeStep === 0} onClick={handleBack}>
+              {/* <Button disabled={activeStep === 0} onClick={handleBack}>
                 Back
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              </Button> */}
+              <Button variant="contained" color="primary" onClick={handleNext} type="submit">
+                {activeStep === steps.length - 1 ? "Submit" : null }
               </Button>
             </div>
           </div>
