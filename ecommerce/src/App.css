@@ -492,8 +492,13 @@ body {
     margin: 5px;
 }
 
+/* .payment-info {
+    width: 500px;
+    height: auto;
 
-@media only screen and (max-width: 600px) {
+} */
+
+/* @media only screen and (max-width: 600px) {
     .side-nav {
         position: absolute;
         left: 0;
@@ -520,4 +525,4 @@ body {
     .navbar-searchbar {
         display: none;
     }
-}
+} */
