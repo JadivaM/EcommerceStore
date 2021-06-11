@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
+import {Typography } from '@material-ui/core';
 
 
 const ProductPage = ({setQuantity, quantity, onAdd}) => {
@@ -69,7 +70,7 @@ const ProductPage = ({setQuantity, quantity, onAdd}) => {
             <p className="product-info-free-shipping">Free shipping over $39</p>
             <div className="product-page-details">
             <p className="product-page-details-text">Details</p>
-            <p className="product-info-desc">{productInfo?.description}</p>
+            <Typography dangerouslySetInnerHTML={{ __html: productInfo?.description }} variant="body" component="p" />
             </div>
             </div>
         </div>
