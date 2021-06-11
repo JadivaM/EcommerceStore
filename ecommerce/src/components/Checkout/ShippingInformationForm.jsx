@@ -21,6 +21,7 @@ const CheckoutForm = ({formData, setFormData, checkoutToken}) => {
     }
 
 
+
   useEffect(() => {
     fetchStates(checkoutToken?.id, userState);
   }, [userState]);
@@ -64,6 +65,7 @@ const CheckoutForm = ({formData, setFormData, checkoutToken}) => {
             <TextField id="outlined-basic" label="Zip code" variant="outlined" value={formData.zip} onChange={handleChange} name="zip" />
             </FormControl>
             </div>
+            
         </div>
     )
 }
