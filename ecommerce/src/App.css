@@ -50,7 +50,7 @@ body {
 .home-hero-image {
     background-image: url('./Images/home-hero-image.jpg');
     width: 90vw;
-    height: 70vh;
+    height: 100vh;
     margin: auto;
     background-repeat: no-repeat;
     background-size: cover;
