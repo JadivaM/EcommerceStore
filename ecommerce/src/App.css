@@ -51,7 +51,7 @@ body {
 .home-hero-image {
     background-image: url('./Images/home-hero-image.jpg');
     width: 90vw;
-    height: 80vh;
+    height: 82vh;
     margin: auto;
     background-repeat: no-repeat;
     background-size: cover;
@@ -500,31 +500,6 @@ body {
 
 } */
 
-/* @media only screen and (max-width: 600px) {
-    .side-nav {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: #fff;
-        z-index: 10;
-        width: 25%;
-        height: 100vh;
-        border: 1px solid rgba(194, 192, 192, 0.301);
-    }  
-    .menu-icon {
-        padding: 10%;
-    }
-    .menu-icon, .hamburger-icon-container {
-        visibility:visible;
-    }
-    .category-links-container {
-        display: none;
-    }
-    
-    .border {
-        border: none;
-    }
-    .navbar-searchbar {
-        display: none;
-    }
-} */
+/* 
+
+ */
