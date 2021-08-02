@@ -218,7 +218,7 @@ body {
     cursor: pointer;
 }
 
-.side-nav-links:hover {
+.side-nav-links:hover, .product-card-text--title:hover {
     color:rgba(31, 30, 30, 0.678);
 }
 
