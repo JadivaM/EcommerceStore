@@ -1,18 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { commerce } from '../../lib/commerce';
 import { useParams, useLocation } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
 import ProductCard from '../Products/ProductCard';
 
 const Category = () => {
-const [categoryProducts, setCategoryProducts] = useState(null)
-const { id } = useParams();
-const location = useLocation();
+  const { setLoading } = useContext(AppContext);
+  const [categoryProducts, setCategoryProducts] = useState(null)
+  const { id } = useParams();
+  const location = useLocation();
 
-useEffect(() => {
-  const getCategory = () => {
-    try {
-        commerce.products.list({'category_slug': [`${id}`]}).then((res) => {
-        setCategoryProducts(res.data); 
+  useEffect(() => {
+    const getCategory = () => {
+      try {
+        setLoading(true);
+        commerce.products.list({'category_slug': [`${id}`]}).   then((res) => {
+          setLoading(false);
+          setCategoryProducts(res.data); 
           console.log(res.data);
         })
       } catch(err) {
@@ -30,7 +34,6 @@ useEffect(() => {
             </div>
             <div className="category-product-cards">
              {categoryProducts?.map((product) => (
-
                  <ProductCard key={product.id} name={product.name} image={product.media.source} id={product.id} {...product} />
              ))}
              </div>

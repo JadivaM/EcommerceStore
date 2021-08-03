@@ -1,22 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { commerce } from '../../lib/commerce';
 import { useParams } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import AddToCartButton from '../Cart/AddToCartButton';
 import RelatedProducts from './RelatedProducts';
 import {Typography } from '@material-ui/core';
+import { AppContext } from '../../context/AppContext';
 
 
 const ProductPage = ({setQuantity, quantity, onAdd}) => {
+    const { setLoading } = useContext(AppContext);
     const [productInfo, setProductInfo] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
         const getProduct = () => {
             try {
+                setLoading(true);
                 commerce.products.retrieve(`${id}`).then((res) => {
+                    setLoading(false);
                     setProductInfo(res); 
-                    console.log(res.media)
+                    console.log(res)
                     })
             }
             catch(err) {

@@ -1,13 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { commerce } from '../../lib/commerce';
 import ProductCard from './ProductCard';
+import { AppContext } from '../../context/AppContext';
 
 const Products = () => {
+    const { setLoading } = useContext(AppContext);
     const [products, setProducts] = useState([]);
 
     const fetchProducts = () => {
       try {
+        setLoading(true);
         commerce.products.list({'limit': 200}).then((res) => {
+          setLoading(false);
           setProducts(res.data);
           console.log(res.data);
         })
@@ -23,7 +27,7 @@ const Products = () => {
     
     return (
         <>
-          <div className="products-category-info-container">
+        <div className="products-category-info-container">
         <p className="products-category-title">all products</p>
         <p className="products-category-results">{products?.length} results</p>
         </div>
