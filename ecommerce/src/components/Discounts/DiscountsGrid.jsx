@@ -39,7 +39,7 @@ const DiscountsGrid = () => {
         indicators={false}
         autoPlay={true}
         stopAutoPlayOnHover={true}
-        interval={10000}
+        interval={8000}
         swipe={true}
         navButtonsProps={{
             style: {

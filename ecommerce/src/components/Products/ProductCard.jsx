@@ -1,8 +1,6 @@
 import React from 'react';
 import {Card, CardContent, CardMedia, Typography, StylesProvider} from '@material-ui/core';
-// import AddToCartButton from '../Cart/AddToCartButton';
 import {Link} from 'react-router-dom';
-// import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const ProductCard = (props) => {
     return (
@@ -20,9 +18,6 @@ const ProductCard = (props) => {
                     <Typography gutterBottom variant="p" component="p" className="product-card-text--price">
                         {props.price.formatted_with_symbol}
                     </Typography>
-                {/* <div className="add-to-cart-container">
-                    <AddToCartButton className={"card-add-to-cart-btn"} id={props.id} quantity={1} icon={<AddShoppingCartIcon className="shopping-basket-icon"/>} color={"default"}/>
-                </div> */}
                 </CardContent>
             </Card>  
             </StylesProvider>

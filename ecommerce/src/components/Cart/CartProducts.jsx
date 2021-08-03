@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Divider, IconButton} from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
-import Button from '@material-ui/core/Button';
 import { commerce } from '../../lib/commerce';
+import { toast } from 'react-toastify';
 
 const CartProducts = ({ item, setQuantity, onRemove}) => {
     const [updateQuantity, setUpdateQuantity] = useState(item.quantity);
@@ -22,6 +22,8 @@ const CartProducts = ({ item, setQuantity, onRemove}) => {
         e.preventDefault();
         commerce.cart.update(item.id, { quantity: `${updateQuantity}` }).then(response => {
             setQuantity(response.quantity);
+        }).catch(error => {
+            toast.error('Error, refresh the page and try again.')
         });
         };
 
@@ -36,17 +38,17 @@ const CartProducts = ({ item, setQuantity, onRemove}) => {
             </div>
             <div className="shopping-cart-items-column">
             <p>Quantity:</p>
-            <form onSubmit={handleSubmit}>
+            <form className="cart-quanity-info-row" onSubmit={handleSubmit}>
             <input type="text" onChange={handleQuantityChange} defaultValue={item.quantity} className="cart-quantity-input"/>
-            <Button type="submit">Update</Button>
+            <button className="cart-update-quantity-button" type="submit">Update</button>
             </form>
             </div>
             <div className="shopping-cart-items-column">
             <p>{item.price.formatted_with_symbol}</p>
             </div>
             <div className="shopping-cart-items-button-column">
-            <IconButton>
-            <ClearIcon onClick={() => handleRemoveItem(item.id)} />
+            <IconButton onClick={() => handleRemoveItem(item.id)}>
+            <ClearIcon />
             </IconButton>
             </div>
         </div> 
