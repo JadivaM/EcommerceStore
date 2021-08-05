@@ -20,7 +20,6 @@ const ProductPage = ({setQuantity, quantity, onAdd}) => {
                 commerce.products.retrieve(`${id}`).then((res) => {
                     setLoading(false);
                     setProductInfo(res); 
-                    console.log(res)
                     })
             }
             catch(err) {

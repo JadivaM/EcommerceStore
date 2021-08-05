@@ -13,7 +13,6 @@ const Products = () => {
         commerce.products.list({'limit': 200}).then((res) => {
           setLoading(false);
           setProducts(res.data);
-          console.log(res.data);
         })
       } catch(err) {
         console.log(err)
