@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, IconButton, Badge} from '@material-ui/core';
+import {AppBar, Toolbar, IconButton, Badge} from '@material-ui/core';
 import NavOptions from './NavOptions';
 import {Link} from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
