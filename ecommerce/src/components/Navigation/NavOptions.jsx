@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import ClearIcon from '@material-ui/icons/Clear';
 import MenuIcon from '@material-ui/icons/Menu';
-import { IconButton, Typography } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import {Link, useLocation} from 'react-router-dom';
 
 const NavOptions = (props) => {
@@ -23,7 +23,6 @@ const NavOptions = (props) => {
         try {
             await commerce.categories.list().then((categories) => {
                 setCategories(categories.data);
-                console.log(categories);
                
           })
         } catch(err) {
@@ -41,9 +40,9 @@ const NavOptions = (props) => {
     return (
         <>
         <div className='side-nav'>
-          {click ? ( <IconButton className="hamburger-icon-container" edge="start" color="#000" aria-label="exit">
+          {click ? ( <IconButton className="hamburger-icon-container" edge="start" aria-label="exit">
             <ClearIcon className="menu-icon" onClick={closeSidenav} />
-          </IconButton>) : ( <IconButton className="hamburger-icon-container" edge="start" color="#000" aria-label="menu">
+          </IconButton>) : ( <IconButton className="hamburger-icon-container" edge="start" aria-label="menu">
             <MenuIcon className="menu-icon" onClick={openSidenav} />
           </IconButton>)}
        
@@ -51,9 +50,9 @@ const NavOptions = (props) => {
             <div className="category-links-container">
             <ul className="side-nav-container-links">
             {categories.map((category) => (
-            <Link to={`/category/products/${category.slug}`} replace={location.pathname === "/"} style={{textDecoration: 'none'}}>
-            <li className="side-nav-links">{category.name}</li>
-            </Link>
+              <Link key={category.id} to={`/category/products/${category.slug}`} replace={location.pathname === "/"} style={{textDecoration: 'none'}}>
+                <li  className="side-nav-links">{category.name}</li>
+              </Link>
             ))}
            </ul>
            </div>
