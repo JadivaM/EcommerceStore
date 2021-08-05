@@ -14,10 +14,9 @@ const Category = () => {
     const getCategory = () => {
       try {
         setLoading(true);
-        commerce.products.list({'category_slug': [`${id}`]}).   then((res) => {
+        commerce.products.list({'category_slug': [`${id}`]}).then((res) => {
           setLoading(false);
           setCategoryProducts(res.data); 
-          console.log(res.data);
         })
       } catch(err) {
         console.log(err)

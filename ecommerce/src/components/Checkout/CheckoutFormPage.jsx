@@ -20,9 +20,7 @@ const CheckoutFormPage = ({cartItem, setCartItem, setCartTotal}) => {
           const generateToken = async () => {
             try {
               const token = await commerce.checkout.generateToken(cartItem.id, { type: 'cart' });
-    
               setCheckoutToken(token);
-              console.log(token);
             } catch(err) {
                 console.log(err);
             }

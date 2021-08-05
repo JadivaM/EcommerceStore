@@ -30,7 +30,6 @@ const App = () => {
             setLoading(false);
             setCartItem(res); 
             setCartTotal(res.total_items)
-            console.log(cartTotal);
             })
     }
     catch(err) {
