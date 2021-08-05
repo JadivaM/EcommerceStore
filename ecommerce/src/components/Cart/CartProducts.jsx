@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Divider, IconButton} from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { commerce } from '../../lib/commerce';
@@ -12,20 +12,27 @@ const CartProducts = ({ item, setQuantity, onRemove}) => {
     const handleQuantityChange = (e) => {
         try{
             setUpdateQuantity(e.target.value);
-            console.log(e.target.value);
         } catch(err) {
             console.log(err)
         }
       };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    
+    const updateCartQuantity = () => {
         commerce.cart.update(item.id, { quantity: `${updateQuantity}` }).then(response => {
             setQuantity(response.quantity);
         }).catch(error => {
             toast.error('Error, refresh the page and try again.')
         });
-        };
+    }
+
+    useEffect(() => {
+        updateCartQuantity();
+    }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        updateCartQuantity();
+    };
 
     return (
         <>
