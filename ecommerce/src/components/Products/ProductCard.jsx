@@ -11,11 +11,11 @@ const ProductCard = (props) => {
                 <CardMedia image={props.image}  title={props.name} />
                 <CardContent className="product-info-container">
                     <Link to={`/product/${props.id}`} style={{color: '#000', textDecoration: 'none'}}>
-                    <Typography gutterBottom variant="p" component="p" className="product-card-text--title">
+                    <Typography gutterBottom variant="h6" component="p" className="product-card-text--title">
                         {props.name}
                     </Typography>
                     </Link>
-                    <Typography gutterBottom variant="p" component="p" className="product-card-text--price">
+                    <Typography gutterBottom variant="body1" component="p" className="product-card-text--price">
                         {props.price.formatted_with_symbol}
                     </Typography>
                 </CardContent>
