@@ -369,6 +369,7 @@ body {
 
 .cart-quanity-info-row {
     display: flex;
+    align-items: center;
 }
 
 .shopping-cart-items-button-column {
@@ -384,13 +385,12 @@ body {
     position: relative;
 }
 
-.cart-update-quantity-button {
-    padding: 4px;
-}
 
 .cart-update-quantity-button {
-    width: 30%;
-    margin-left: 10px;
+    padding: 1%;
+    width: 2rem;
+    display: flex;
+    align-items: center;
 } 
 
 .cart-total-container {
@@ -477,7 +477,8 @@ body {
 
 .cart-quantity-input {
     width: 100px;
-    padding: 3px;
+    text-align: center;
+    padding: 1%;
 }
 
 .checkout-stepper-container {
