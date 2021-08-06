@@ -23,7 +23,7 @@ const Category = () => {
       }
     }
     getCategory();
-}, [location.hash, id])
+}, [location.hash, id, setLoading])
 
     return (
         <>
