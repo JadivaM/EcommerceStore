@@ -40,10 +40,10 @@ const NavOptions = (props) => {
     return (
         <>
         <div className='side-nav'>
-          {click ? ( <IconButton className="hamburger-icon-container" edge="start" aria-label="exit">
-            <ClearIcon className="menu-icon" onClick={closeSidenav} />
-          </IconButton>) : ( <IconButton className="hamburger-icon-container" edge="start" aria-label="menu">
-            <MenuIcon className="menu-icon" onClick={openSidenav} />
+          {click ? ( <IconButton onClick={closeSidenav} className="hamburger-icon-container" edge="start" aria-label="exit">
+            <ClearIcon className="menu-icon"  />
+          </IconButton>) : ( <IconButton onClick={openSidenav} className="hamburger-icon-container" edge="start" aria-label="menu">
+            <MenuIcon className="menu-icon" />
           </IconButton>)}
        
           <div className="side-nav-main-container">
