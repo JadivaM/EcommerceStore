@@ -4,8 +4,6 @@ import CartTotal from '../Cart/CartTotal';
 
 const ShoppingCart = ({setQuantity, quantity, cartItem, onRemove}) => {
 
-    
-
     return (
         <div>
             <h1 className="cart-title">Shopping cart</h1>
@@ -13,18 +11,15 @@ const ShoppingCart = ({setQuantity, quantity, cartItem, onRemove}) => {
             <p className="cart-is-empty-text">Cart is empty :(</p>
             :
             (<div className="shopping-cart-info-container">
-            {cartItem?.line_items?.map((item) => (
-            <div className="cart-product-info-container">
-            <CartProducts key={item.id} item={item} quantity={quantity} setQuantity={setQuantity} onRemove={onRemove} />
-            </div>
+                <div className="cart-product-info-container">
+                    {cartItem?.line_items?.map((item) => (
+                    <CartProducts key={item.id} item={item} quantity={quantity} setQuantity={setQuantity} onRemove={onRemove} />
             ))} 
+                </div>
             <div className="cart-total-container">
-            <CartTotal key={cartItem?.id} subtotal={cartItem.subtotal.formatted_with_symbol} items={cartItem.total_items} />
+            <CartTotal key={cartItem.id} subtotal={cartItem.subtotal.formatted_with_symbol} items={cartItem.total_items} />
             </div>
             </div>)}
-
-            
-           
         </div>
     )
 }
