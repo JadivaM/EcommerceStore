@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, useCallback} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { commerce } from './lib/commerce';
@@ -23,7 +23,7 @@ const App = () => {
   const [cartItem, setCartItem] = useState();
   const [cartTotal, setCartTotal] = useState();
 
-  const getCartItems = async () => {
+  const getCartItems = useCallback(async () => {
     try {
         setLoading(true);
         await commerce.cart.retrieve().then((res) => {
@@ -35,7 +35,7 @@ const App = () => {
     catch(err) {
         console.log(err)
     }
-}
+  },[setLoading])
 
 const handleRemoveItem = (itemId) => {
     setLoading(true);
@@ -59,7 +59,7 @@ const handleRemoveItem = (itemId) => {
 
   useEffect(() => {
     getCartItems();
-}, [quantity, cartTotal, setCartTotal])
+}, [getCartItems, quantity, cartTotal, setCartTotal])
 
   return (
     <div className="App">
