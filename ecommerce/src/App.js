@@ -22,6 +22,7 @@ const App = () => {
   const [quantity, setQuantity] = useState(1);
   const [cartItem, setCartItem] = useState();
   const [cartTotal, setCartTotal] = useState();
+  const [order, setOrder] = useState({});
 
   const getCartItems = useCallback(async () => {
     try {
@@ -57,6 +58,22 @@ const handleRemoveItem = (itemId) => {
           setQuantity(1); 
 }
 
+  const refreshCart = async () => {
+    const getNewCart = await commerce.cart.refresh();
+    setCartItem(getNewCart);
+  }
+
+  const handleCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      const currentOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+      setOrder(currentOrder);
+      refreshCart();
+    }
+    catch (error) {
+      toast.error('Error. Could not checkout')
+    }
+  }
+
   useEffect(() => {
     getCartItems();
 }, [getCartItems, quantity, cartTotal, setCartTotal])
@@ -82,7 +99,7 @@ const handleRemoveItem = (itemId) => {
             <SearchResults searchResults={searchResults} />
           </Route>
           <Route path="/checkout" exact>
-            <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} />
+            <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} order={order} handleCheckout={handleCheckout}  />
           </Route>
         </Switch>
       </Router>
