@@ -2,15 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import StepLabel from '@material-ui/core/StepLabel';
 import ShippingInformationForm from '../Checkout/ShippingInformationForm';
 import PaymentDetailsForm from '../Checkout/PaymentDetailsForm';
-import ReviewCheckoutInformation from '../Checkout/ReviewCheckoutInformation';
 
 
-const CheckoutFormPage = ({cartItem, setCartItem, setCartTotal}) => {
+const CheckoutFormPage = ({cartItem, order, handleCheckout, setCartItem, setCartTotal}) => {
     const [formData, setFormData] = useState([]);
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
@@ -33,7 +31,7 @@ const CheckoutFormPage = ({cartItem, setCartItem, setCartTotal}) => {
 
 
     const getSteps = () => {
-        return ['Shipping information', 'Payment Details', 'Review and Order'];
+        return ['Shipping information', 'Payment Details'];
       }
 
       function getStepContent(step) {
@@ -41,9 +39,7 @@ const CheckoutFormPage = ({cartItem, setCartItem, setCartTotal}) => {
           case 0:
             return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
           case 1:
-            return (<PaymentDetailsForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
-          case 2:
-            return (<ReviewCheckoutInformation checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} cartItem={cartItem} />);
+            return (<PaymentDetailsForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} handleCheckout={handleCheckout} />);
           default:
             return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
         }
@@ -76,7 +72,7 @@ const CheckoutFormPage = ({cartItem, setCartItem, setCartTotal}) => {
               Back
             </Button>
             <Button variant="contained" color="primary" onClick={handleNext} type="submit">
-              {activeStep === steps.length - 1 ? "Submit" : "Next" }
+              {activeStep === steps.length - 1 ? `Pay ${checkoutToken.live.subtotal.formatted_with_symbol}` : "Next" }
             </Button>
         </div>
         </div>
