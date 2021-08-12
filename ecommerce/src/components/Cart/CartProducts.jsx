@@ -39,13 +39,6 @@ const CartProducts = ({ item, setQuantity, onRemove}) => {
         updateCartQuantity();
     }, [updateCartQuantity])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        updateCartQuantity();
-    };
-
-
-
 
     return (
         <>
@@ -58,15 +51,15 @@ const CartProducts = ({ item, setQuantity, onRemove}) => {
             </div>
             <div className="shopping-cart-items-column">
             <p>Quantity:</p>
-            <form className="cart-quanity-info-row" onSubmit={handleSubmit}>
-            <button type='submit' className="cart-update-quantity-button" onClick={handleDecrementQuantity}>
+            <div className="cart-quanity-info-row">
+            <button className="cart-update-quantity-button" onClick={handleDecrementQuantity}>
                 <RemoveIcon />
             </button>
             <p className="cart-quantity-input">{item.quantity}</p>
-            <button type='submit' className="cart-update-quantity-button" onClick={handleIncrementQuantity}>
+            <button className="cart-update-quantity-button" onClick={handleIncrementQuantity}>
                 <AddIcon />
             </button>
-            </form>
+            </div>
             </div>
             <div className="shopping-cart-items-column">
             <p>{item.price.formatted_with_symbol}</p>
