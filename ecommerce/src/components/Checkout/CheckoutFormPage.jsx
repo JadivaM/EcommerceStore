@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { commerce } from '../../lib/commerce';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import Button from '@material-ui/core/Button';
 import StepLabel from '@material-ui/core/StepLabel';
 import ShippingInformationForm from '../Checkout/ShippingInformationForm';
 import PaymentDetailsForm from '../Checkout/PaymentDetailsForm';
+import ConfirmationForm from '../Checkout/ConfirmationForm';
 
 
-const CheckoutFormPage = ({cartItem, order, handleCheckout, setCartItem, setCartTotal}) => {
+const CheckoutFormPage = ({cartItem, handleCheckout}) => {
     const [formData, setFormData] = useState([]);
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
@@ -28,18 +28,21 @@ const CheckoutFormPage = ({cartItem, order, handleCheckout, setCartItem, setCart
         }
       }, [cartItem]);
 
-
+      let Confirmation = () => (
+          <h2>Thank you for your purchase {formData.firstName}!</h2>);
 
     const getSteps = () => {
-        return ['Shipping information', 'Payment Details'];
+        return ['Shipping information', 'Payment Details', 'Confirmation'];
       }
 
       function getStepContent(step) {
         switch (step) {
           case 0:
-            return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
+            return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} handleNext={handleNext} handleBack={handleBack}/>);
           case 1:
-            return (<PaymentDetailsForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} handleCheckout={handleCheckout} />);
+            return (<PaymentDetailsForm checkoutToken={checkoutToken} formData={formData} handleCheckout={handleCheckout} handleNext={handleNext} handleBack={handleBack} />);
+            case 2:
+            return (<ConfirmationForm formData={formData}/>);
           default:
             return (<ShippingInformationForm checkoutToken={checkoutToken} setFormData={setFormData} formData={formData} />);
         }
@@ -67,13 +70,10 @@ const CheckoutFormPage = ({cartItem, order, handleCheckout, setCartItem, setCart
           </Stepper>
         <div>
         <div className="checkout-step">
-            {getStepContent(activeStep)}<div>
-            <Button disabled={activeStep === 0} onClick={handleBack}>
-              Back
-            </Button>
-            <Button variant="contained" color="primary" onClick={handleNext} type="submit">
-              {activeStep === steps.length - 1 ? `Pay ${checkoutToken.live.subtotal.formatted_with_symbol}` : "Next" }
-            </Button>
+        {activeStep === steps.length ? <Confirmation /> 
+        : getStepContent(activeStep)
+        }
+        <div>
         </div>
         </div>
       </div>
