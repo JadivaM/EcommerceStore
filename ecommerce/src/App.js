@@ -22,7 +22,6 @@ const App = () => {
   const [quantity, setQuantity] = useState(1);
   const [cartItem, setCartItem] = useState();
   const [cartTotal, setCartTotal] = useState();
-  const [order, setOrder] = useState({});
 
   const getCartItems = useCallback(async () => {
     try {
@@ -58,21 +57,15 @@ const handleRemoveItem = (itemId) => {
           setQuantity(1); 
 }
 
-  const refreshCart = async () => {
-    const getNewCart = await commerce.cart.refresh();
-    setCartItem(getNewCart);
-  }
 
-  const handleCheckout = async (checkoutTokenId, newOrder) => {
-    try {
-      const currentOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
-      setOrder(currentOrder);
-      refreshCart();
-    }
-    catch (error) {
-      toast.error('Error. Could not checkout')
-    }
-  }
+const handleCheckout = () => {
+    setLoading(true);
+    commerce.cart.empty().then(json => {
+    setLoading(false);
+    setCartItem(json.cart);
+    setCartTotal(json.cart.totalItems);
+  });
+}
 
   useEffect(() => {
     getCartItems();
@@ -93,13 +86,13 @@ const handleRemoveItem = (itemId) => {
             <ProductPage quantity={quantity} setQuantity={setQuantity} onAdd={handleAddToCart} />
           </Route>
           <Route path="/cart" exact>
-            <ShoppingCart quantity={quantity} setQuantity=  {setQuantity} setCartItem={setCartItem} cartItem={cartItem} onRemove={handleRemoveItem}/>
+            <ShoppingCart quantity={quantity} setQuantity=  {setQuantity} setCartItem={setCartItem} cartItem={cartItem} onRemove={handleRemoveItem} />
           </Route>
           <Route path="/results" exact>
             <SearchResults searchResults={searchResults} />
           </Route>
           <Route path="/checkout" exact>
-            <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} order={order} handleCheckout={handleCheckout}  />
+            <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} handleCheckout={handleCheckout} />
           </Route>
         </Switch>
       </Router>
