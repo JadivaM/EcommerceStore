@@ -1,8 +1,16 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+
 
 const AddToCartButton = ({productInfo, onAdd, quantity}) => {
 
-    const handleAddToCart = (productId, qty) => {onAdd(productId, qty)};
+    const handleAddToCart = (productId, qty) =>  {
+    try {
+        onAdd(productId, qty)
+      } catch(err) {
+        toast.error('Error, refresh the page and try again.')
+      }
+    }
 
     return (
         <div>

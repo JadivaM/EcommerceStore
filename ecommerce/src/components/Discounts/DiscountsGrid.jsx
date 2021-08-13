@@ -22,7 +22,6 @@ const DiscountsGrid = () => {
                     .then((res) => {
                         res.json().then((res) => {
                           setDiscounts(res.data);
-                          console.log(res.data);
                         });
                       });
                 } catch(err) {
@@ -37,11 +36,11 @@ const DiscountsGrid = () => {
         <Carousel 
         animation={'fade'}
         indicators={false}
-        autoPlay={true}
+        autoPlay={false}
         stopAutoPlayOnHover={true}
-        interval={8000}
+        navButtonsAlwaysVisible={true}
         swipe={true}
-        navButtonsProps={{
+            navButtonsProps={{
             style: {
                 backgroundColor: 'transparent',
                 color: 'black'
@@ -49,11 +48,9 @@ const DiscountsGrid = () => {
         }}
         >
         {discounts?.map((discount) => (
-            <>
-        <CarouselSlide>
+        <CarouselSlide key={discount.id}>
               <p className="discount-text-carousel">{discount.value}% off {discount.code} with code {discount.code}</p>
         </CarouselSlide>
-</>
         ))}
         </Carousel>
         </>

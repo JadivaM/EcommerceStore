@@ -7,23 +7,20 @@ const Products = () => {
     const { setLoading } = useContext(AppContext);
     const [products, setProducts] = useState([]);
 
-    const fetchProducts = () => {
-      try {
-        setLoading(true);
-        commerce.products.list({'limit': 200}).then((res) => {
-          setLoading(false);
-          setProducts(res.data);
-          console.log(res.data);
-        })
-      } catch(err) {
-        console.log(err)
-      }
-    }
-
-
     useEffect(() => {
+      const fetchProducts = () => {
+        try {
+          setLoading(true);
+          commerce.products.list({'limit': 200}).then((res) => {
+            setLoading(false);
+            setProducts(res.data);
+          })
+        } catch(err) {
+          console.log(err)
+        }
+      }
       fetchProducts();
-    }, []);
+    }, [setLoading]);
     
     return (
         <>
@@ -33,9 +30,9 @@ const Products = () => {
         </div>
         <div className="product-cards">
         {products.map(product => (
-        <div>
+        // <div>
         <ProductCard key={product.id} name={product.name} image={product.media.source} id={product.id} {...product} />
-       </div>
+      //  </div>
         ))}  
          </div>
        

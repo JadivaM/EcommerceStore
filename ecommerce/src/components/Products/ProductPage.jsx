@@ -20,7 +20,6 @@ const ProductPage = ({setQuantity, quantity, onAdd}) => {
                 commerce.products.retrieve(`${id}`).then((res) => {
                     setLoading(false);
                     setProductInfo(res); 
-                    console.log(res)
                     })
             }
             catch(err) {
@@ -28,7 +27,7 @@ const ProductPage = ({setQuantity, quantity, onAdd}) => {
             }
         }
         getProduct()
-    }, [id])
+    }, [id, setLoading])
 
     const handleQuantityChange = (e) => {
         try{
@@ -74,7 +73,7 @@ const ProductPage = ({setQuantity, quantity, onAdd}) => {
             <p className="product-info-free-shipping">Free shipping over $39</p>
             <div className="product-page-details">
             <p className="product-page-details-text">Details</p>
-            <Typography dangerouslySetInnerHTML={{ __html: productInfo?.description }} variant="body" component="p" />
+            <Typography dangerouslySetInnerHTML={{ __html: productInfo?.description }} variant="body1" component="p" />
             </div>
             </div>
         </div>

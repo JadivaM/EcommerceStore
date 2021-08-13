@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, useCallback} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { commerce } from './lib/commerce';
@@ -23,20 +23,19 @@ const App = () => {
   const [cartItem, setCartItem] = useState();
   const [cartTotal, setCartTotal] = useState();
 
-  const getCartItems = async () => {
+  const getCartItems = useCallback(async () => {
     try {
         setLoading(true);
         await commerce.cart.retrieve().then((res) => {
             setLoading(false);
             setCartItem(res); 
             setCartTotal(res.total_items)
-            console.log(cartTotal);
             })
     }
     catch(err) {
         console.log(err)
     }
-}
+  },[setLoading])
 
 const handleRemoveItem = (itemId) => {
     setLoading(true);
@@ -58,9 +57,19 @@ const handleRemoveItem = (itemId) => {
           setQuantity(1); 
 }
 
+
+const handleCheckout = () => {
+    setLoading(true);
+    commerce.cart.empty().then(json => {
+    setLoading(false);
+    setCartItem(json.cart);
+    setCartTotal(json.cart.totalItems);
+  });
+}
+
   useEffect(() => {
     getCartItems();
-}, [quantity, cartTotal, setCartTotal])
+}, [getCartItems, quantity, cartTotal, setCartTotal])
 
   return (
     <div className="App">
@@ -77,13 +86,13 @@ const handleRemoveItem = (itemId) => {
             <ProductPage quantity={quantity} setQuantity={setQuantity} onAdd={handleAddToCart} />
           </Route>
           <Route path="/cart" exact>
-            <ShoppingCart quantity={quantity} setQuantity=  {setQuantity} setCartItem={setCartItem} cartItem={cartItem} onRemove={handleRemoveItem}/>
+            <ShoppingCart quantity={quantity} setQuantity=  {setQuantity} setCartItem={setCartItem} cartItem={cartItem} onRemove={handleRemoveItem} />
           </Route>
           <Route path="/results" exact>
             <SearchResults searchResults={searchResults} />
           </Route>
           <Route path="/checkout" exact>
-            <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} />
+            <CheckoutFormPage setCartTotal={setCartTotal} setCartItem={setCartItem} cartItem={cartItem} handleCheckout={handleCheckout} />
           </Route>
         </Switch>
       </Router>

@@ -1,81 +1,67 @@
-// import React from 'react';
-// import {Elements} from '@stripe/react-stripe-js';
-// import {loadStripe} from '@stripe/stripe-js';
-// import { ElementsConsumer } from '@stripe/react-stripe-js';
-// import {CardElement} from '@stripe/react-stripe-js';
+import React from 'react';
+import {Elements, CardElement, ElementsConsumer} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import { Button, List, ListItem, ListItemText, Divider } from '@material-ui/core';
+
+const stripePromise = loadStripe( process.env.REACT_APP_STRIPE_PUBLIC_KEY );
 
 
-// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const PaymentDetailsForm = ({checkoutToken, handleCheckout, handleBack, handleNext}) => {
 
-// const PaymentDetailsForm = ({formData, setFormData , checkoutToken}) => {
-    
- 
+  const handleSubmit = (event, elements, stripe) => {
+    event.preventDefault();
+    handleCheckout();
+    handleNext();
+      };
 
-//     const handleChange = (e) => {
-//         setFormData({ ...formData, [e.target.name]: e.target.value });
-//         console.log(formData);
-//       };
+     
+    return (
+          <div className="payment-info">
+            <h3>Payment details</h3>
+          <Elements stripe={stripePromise}>
+          <ElementsConsumer>{({ elements, stripe }) => (
+            <form onSubmit={handleSubmit}>
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: '16px',
+                  color: '#424770',
+                  '::placeholder': {
+                    color: '#aab7c4',
+                  },
+                },
+                invalid: {
+                  color: '#9e2146',
+                },
+              },
+            }}
+          />
+           <Divider />
+          <h3>Review order</h3>
+          <List disablePadding>
+            {checkoutToken.live.line_items.map((product) => (
+          <ListItem style={{ padding: '10px 0' }} key={product.name}>
+          <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
+          <p>{product.line_total.formatted_with_symbol}</p>
+          </ListItem>
+          ))}
+          </List>
+            <div className="stepper-buttons-container">
+            <Button onClick={handleBack}>
+              Back
+            </Button>
+            <Button variant="contained" color="primary" disabled={!stripe} type="submit">
+              Pay {checkoutToken.live.subtotal.formatted_with_symbol}
+            </Button>
+            </div>
+           </form>
+          )}
+          </ElementsConsumer>
+        </Elements>  
+   
+        </div>
+        )
+}
 
-//       const handleSubmit = async (event, elements, stripe) => {
-//         event.preventDefault();
-
-//       if (!stripe || !elements) return;
-
-//       const cardElement = elements.getElement(CardElement);
-  
-//       const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
-  
-//       if (error) {
-//         console.log('[error]', error);
-//       } else {
-//         const orderData = {
-//           line_items: checkoutToken.live.line_items,
-//           customer: { firstname: formData.firstName, lastname: formData.lastName, email: formData.email },
-//           shipping: { name: 'US', street: formData.address, town_city: formData.city, county_state: formData.state, postal_zip_code: formData.zip },
-//           payment: {
-//             gateway: 'stripe',
-//             stripe: {
-//               payment_method_id: paymentMethod.id,
-//             },
-//           },
-//         };
-//     }}
-
-//     return (
-//         <div className="payment-info">
-//         <Elements stripe={stripePromise}>
-//         <ElementsConsumer>{({ elements, stripe }) => (
-//         //   <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
-//         <CardElement
-//           options={{
-//             style: {
-//               base: {
-//                 fontSize: '16px',
-//                 color: '#424770',
-//                 '::placeholder': {
-//                   color: '#aab7c4',
-//                 },
-//               },
-//               invalid: {
-//                 color: '#9e2146',
-//               },
-//             },
-//           }}
-//         />
-//         //     <br /> <br />
-//         //     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-//         //       <Button variant="outlined" onClick={backStep}>Back</Button>
-//         //       <Button type="submit" variant="contained" disabled={!stripe} color="primary">
-//         //         Pay {checkoutToken.live.subtotal.formatted_with_symbol}
-//         //       </Button>
-//         //     </div>
-//         //   </form>
-//         )}
-//         </ElementsConsumer>
-//       </Elements>
-            
-//         </div>
-//     )
-// }
-
-// export default PaymentDetailsForm
+export default PaymentDetailsForm
