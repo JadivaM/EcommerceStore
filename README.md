@@ -2,6 +2,11 @@
 
 - In this project I used the Commercejs API to build an ecommerce store. Users are able to navigate through the pages and view the seperate products available able to view the videos, product description, and pricing. Funcitonality also includes adding products to a cart, editing the quantity of the item in the cart, removing the item from the cart, and viewing the cart total creating a online shopping experience.
 
+##Demo
+
+https://user-images.githubusercontent.com/73275538/132901631-d1895b7d-50b8-4067-9348-30c87cc8603b.mp4
+
+
 ## How to use
 
 - Navigating on the website can be done using the navigation bar where the categories are presented for you to view. 
