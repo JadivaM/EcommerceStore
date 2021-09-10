@@ -164,14 +164,21 @@ body {
     outline: none;
 }
 
-.search-bar-icon {
+.search-bar-icons-container {
     position: absolute;
     right: 0;
-    color: #000;
-    padding: 3px 3px 5px 0;
-    cursor: pointer;
 }
 
+.search-bar-icon-button {
+    background-color: transparent;
+    border: none;
+}
+
+#search-bar-icon {
+    padding: 3px 3px 5px 0;
+    cursor: pointer;
+    color:rgba(71, 70, 70, 0.89);
+}
 
 .shopping-basket-icon {
     color: #000;
